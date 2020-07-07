@@ -1,18 +1,18 @@
-a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
+:host::ng-deep .menu {
+  border: none;
+  display: none;
 }
 
-html {
-  font-size: 14px;
-}
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
+  :host::ng-deep .menu {
+    background-color: blue;
+    display: block;
   }
 }
 
-.box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+@media (min-width: 1200px) {
+  :host::ng-deep .menu {
+    background-color: red;
+    display: block;
+  }
 }
