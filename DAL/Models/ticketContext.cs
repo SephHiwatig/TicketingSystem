@@ -25,14 +25,6 @@ namespace DAL.Models
         public virtual DbSet<Userroles> Userroles { get; set; }
         public virtual DbSet<Users> Users { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseMySql("server=localhost;user id=root;password=root;database=ticket", x => x.ServerVersion("10.4.11-mariadb"));
-            }
-        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -290,9 +282,11 @@ namespace DAL.Models
 
                 entity.Property(e => e.Password)
                     .IsRequired()
-                    .HasColumnType("varchar(20)")
-                    .HasCharSet("latin1")
-                    .HasCollation("latin1_swedish_ci");
+                    .HasMaxLength(250);
+
+                entity.Property(e => e.PasswordSalt)
+                    .IsRequired()
+                    .HasMaxLength(250);
 
                 entity.Property(e => e.Username)
                     .IsRequired()
