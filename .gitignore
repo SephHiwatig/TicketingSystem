@@ -1,0 +1,4 @@
+ClientApp/node_modules
+ClientApp/dist/
+# Visual Studio cache/options directory
+.vs/
