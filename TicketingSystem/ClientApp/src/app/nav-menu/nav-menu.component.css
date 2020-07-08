@@ -1,18 +1,71 @@
-:host::ng-deep .menu {
-  border: none;
+.header {
+  background-color: #457fca;
+  position: fixed;
+  width: 100%;
+/*  margin-top: -50px;*/
+  z-index: 99;
+}
+
+.logo {
+    max-width: 40px;
+}
+
+.navbar {
+  padding: 10px;
+  color: white;
+  display: flex;
+  align-items: center;
+}
+
+.navbar div:nth-child(1) {
+    flex: 1;
+    font-size: x-large;
+}
+
+
+.navbar div:nth-child(2) {
+    flex: 2;
+    text-align: right
+}
+
+.user {
+  margin-left: 10px;
+  cursor: pointer;
+  position: relative;
+  display: inline;
+}
+
+.user:hover .user-dropdown {
+    display: block;
+}
+
+.user-dropdown {
+  position: absolute;
+  list-style: none;
+  background-color: #58a0fc;
+  right: 0;
+  top: 1px;
+  padding: 0 !important;
+  border-radius: 4px;
   display: none;
 }
 
+.user-dropdown li {
+    padding: 10px;
+    width: 100%;
+    border-radius: 4px;
+}
+
+  .user-dropdown li:hover {
+    background-color: #6d44c7;
+  }
+
+
 @media (min-width: 768px) {
-  :host::ng-deep .menu {
-    background-color: blue;
-    display: block;
+  .navbar {
+    margin-left: 15%;
+    margin-right: 15%;
   }
 }
 
-@media (min-width: 1200px) {
-  :host::ng-deep .menu {
-    background-color: red;
-    display: block;
-  }
-}
+

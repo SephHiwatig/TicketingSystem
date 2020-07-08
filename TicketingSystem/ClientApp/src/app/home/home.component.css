@@ -1,0 +1,41 @@
+.login-sect, .register-sect {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-form, .register-form {
+  padding: 50px;
+  border-left: 5px solid #6d44c7;
+  margin: 25px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  z-index: 10 !important;
+}
+
+.login-form input, .register-form input {
+  display: block;
+  margin: 5px;
+  border-radius: 4px;
+  padding: 14px 20px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  margin-left: -2px;
+}
+
+
+
+.login-form input:focus, .register-form input:focus {
+  outline: 1px auto #457fca;
+  outline-offset: -2px;
+}
+
+.input-validation-messages {
+  font-size: small;
+  color: #C62828;
+  list-style-type: none;
+  list-style-position: inside;
+  margin: 0;
+  padding: 0;
+}
+
+

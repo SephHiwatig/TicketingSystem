@@ -1,16 +1,38 @@
 /* You can add global styles to this file, and also import other style files */
 
 /* Provide sufficient contrast against white background */
-a {
-  color: #0366d6;
+body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Roboto Condensed', sans-serif;
+  height: 100%;
 }
 
-code {
-  color: #e01a76;
+.container {
+/*    margin-top: 50px;*/
+/*    padding: 5px 10px;*/
+  padding-top: 50px;
 }
 
-.btn-primary {
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+  background-color: rgba(0,0,0,.87);
+  flex-direction: column;
+  padding: 20px;
+  height: 100%;
+}
+
+.footer h2 {
+    border-bottom: 1px solid #fff;
+    padding-bottom: 10px;
+}
+
+@media (min-width: 768px) {
+  .container {
+    margin-left: 15%;
+    margin-right: 15%;
+  }
 }
