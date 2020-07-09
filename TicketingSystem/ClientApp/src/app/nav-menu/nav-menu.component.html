@@ -8,10 +8,11 @@
       <p-button label="Report Issue"
                 styleClass="ui-button-secondary ui-button-raised ui-button-rounded"
                 icon="pi pi-exclamation-circle"
-                iconPos="left"></p-button>
+                iconPos="left"
+                (click)="onReportIssue()"></p-button>
       <div class="user">
         <i class="pi pi-user"></i>
-        {{authService.decodedToken.unique_name}}
+        {{authService.username}}
         <ul class="user-dropdown">
           <li>My Account</li>
           <li (click)="onLogout()">Signout</li>

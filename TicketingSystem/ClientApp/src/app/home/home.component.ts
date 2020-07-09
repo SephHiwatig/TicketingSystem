@@ -30,6 +30,7 @@ export class HomeComponent implements OnInit {
   onLogin() {
     this.authService.login(this.loginForm.value).subscribe(
       () => {
+        // redirection is handled in auth service
       }, () => {
         this.messageService.add({ severity: 'error', summary: 'Failed', detail: "Invalid Username or Password" });
       }
@@ -39,12 +40,14 @@ export class HomeComponent implements OnInit {
   onRegister() {
     this.authService.register(this.registerForm.value).subscribe(
       (res) => {
+        // Log user in after succesful registration
         const userForLogin = {
           username: this.registerForm.value.username,
           password: this.registerForm.value.password
         };
         this.authService.login(userForLogin).subscribe(
           (res) => {
+              // redirection is handled in auth service
           }, (err) => {
             this.messageService.add({ severity: 'error', summary: 'Sorry', detail: "Something went wrong"});
           }
@@ -56,6 +59,7 @@ export class HomeComponent implements OnInit {
   }
 
   private initForms() {
+    // Initialize Both Forms
     this.loginForm = new FormGroup({
       username: new FormControl(null, Validators.required),
       password: new FormControl(null, Validators.required)

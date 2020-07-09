@@ -1,0 +1,68 @@
+<section class="report-section">
+  <form class="report-issue-form">
+    <div class="form-header">
+      <h1>Enter Issue Details</h1>
+    </div>
+    <div class="form-content">
+      <div>
+        <div class="content-title">
+          Project
+        </div>
+        <div class="content-input">
+          <p-dropdown [options]="projects"></p-dropdown>
+        </div>
+      </div>
+      <div>
+        <div class="content-title">
+          Assign To
+        </div>
+        <div class="content-input">
+          <p-dropdown [options]="developers"></p-dropdown>
+        </div>
+      </div>
+      <div>
+        <div class="content-title">
+          Severity
+        </div>
+        <div class="content-input">
+          <p-dropdown [options]="severity"></p-dropdown>
+        </div>
+      </div>
+      <div>
+        <div class="content-title">
+          Priority
+        </div>
+        <div class="content-input">
+          <p-dropdown [options]="priority"></p-dropdown>
+        </div>
+      </div>
+      <div>
+        <div class="content-title">
+          Title
+        </div>
+        <div class="content-input">
+          <input type="text" pInputText class="txtInput"/>
+        </div>
+      </div>
+      <div>
+        <div class="content-title">
+          Summary
+        </div>
+        <div class="content-input">
+          <textarea pInputTextarea class="txtArea" [rows]="5"></textarea>
+        </div>
+      </div>
+      <div>
+        <div class="content-title">
+          Comment
+        </div>
+        <div class="content-input">
+          <textarea pInputTextarea class="txtArea" [rows]="5"></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="form-footer">
+      <p-button label="Submit Issue" styleClass="ui-button-info ui-button-raised"></p-button>
+    </div>
+  </form>
+</section>

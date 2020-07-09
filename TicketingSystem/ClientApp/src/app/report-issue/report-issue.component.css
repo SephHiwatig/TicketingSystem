@@ -1,0 +1,73 @@
+.report-section {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.report-issue-form {
+  display: flex;
+  flex-direction: column;
+  border-radius: 4px;
+  border: 2px solid #457fca;
+}
+
+.form-header, .form-content {
+  flex: 1;
+}
+
+.form-header {
+  color: #fff;
+  background-color: #457fca;
+  padding: 10px;
+}
+
+.form-header h1 {
+    margin: 0;
+}
+
+.form-content {
+    display: flex;
+    flex-direction: column;
+}
+
+  .form-content div {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .form-content div:nth-child(6) {
+    flex: 10 !important;
+  }
+
+.content-title, .content-input {
+  padding: 10px;
+  border: 1px solid #d1d1d1;
+}
+
+.content-title {
+  background-color: #94c3ff;
+}
+
+.txtArea, .txtInput {
+  width: 100% !important;
+}
+
+.form-footer {
+    padding: 10px;
+    background-color: #ccc;
+}
+
+@media (min-width: 768px) {
+  .form-content div {
+    flex-direction: row;
+  }
+
+  .content-title {
+      flex: 3;
+  }
+
+  .content-input {
+    flex: 7;
+  }
+}
+
+

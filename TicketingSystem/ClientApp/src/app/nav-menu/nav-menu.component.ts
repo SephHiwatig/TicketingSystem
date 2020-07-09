@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SelectItem } from 'primeng-lts/components/common/selectitem';
 import { AuthService } from '../_services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav-menu',
@@ -9,7 +10,7 @@ import { AuthService } from '../_services/auth.service';
 })
 export class NavMenuComponent implements OnInit {
 
-  constructor(public authService: AuthService) { }
+  constructor(public authService: AuthService, private router: Router) { }
 
   ngOnInit() {
 
@@ -17,5 +18,9 @@ export class NavMenuComponent implements OnInit {
 
   onLogout() {
     this.authService.logout();
+  }
+
+  onReportIssue() {
+    this.router.navigate(['report']);
   }
 }

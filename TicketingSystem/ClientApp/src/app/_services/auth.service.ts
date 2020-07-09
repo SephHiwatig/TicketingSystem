@@ -13,7 +13,9 @@ export class AuthService {
 
   jwtHelper = new JwtHelperService();
   isAuthorized: boolean;
-  decodedToken: any;
+  username: string;
+  userid: number;
+
 
   constructor(private http: HttpClient, private router: Router, private messageService: MessageService) { }
 
@@ -24,8 +26,10 @@ export class AuthService {
           if (res.token && res.token.length > 0) {
             this.isAuthorized = true;
             localStorage.setItem('token', res.token);
-            this.decodedToken = this.jwtHelper.decodeToken(res.token);
-            this.messageService.add({ severity: 'success', summary: 'Login successful', detail: "Welcome " + this.decodedToken.unique_name });
+            const { nameid, unique_name } = this.jwtHelper.decodeToken(res.token);
+            this.userid = nameid;
+            this.username = unique_name;
+            this.messageService.add({ severity: 'success', summary: 'Login successful', detail: "Welcome " + unique_name });
             this.router.navigate(['dashboard']);
           }
         })
@@ -34,7 +38,8 @@ export class AuthService {
 
   logout() {
     localStorage.clear();
-    this.decodedToken = undefined;
+    this.username = undefined;
+    this.userid = undefined;
     this.isAuthorized = false;
     this.router.navigate(['']);
   }
