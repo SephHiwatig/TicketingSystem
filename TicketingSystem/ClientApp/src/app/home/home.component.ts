@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { MessageService } from 'primeng-lts/components/common/messageservice';
 
 @Component({
   selector: 'app-home',
@@ -11,8 +12,10 @@ export class HomeComponent implements OnInit {
 
   loginForm: FormGroup;
   registerForm: FormGroup;
+  passwordRegex: string = '(?=^.{8,}$)(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\\s)[0-9a-zA-Z!@#$%^&*()]*$';
+  emailRegex: string = '^([a-zA-Z0-9_\\-\\.]+)@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.)|(([a-zA-Z0-9\\-]+\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\\]?)$';
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private messageService: MessageService) { }
 
   ngOnInit() {
     this.initForms();
@@ -23,7 +26,23 @@ export class HomeComponent implements OnInit {
   }
 
   onRegister() {
-    console.log(this.registerForm);
+    this.authService.register(this.registerForm.value).subscribe(
+      (res) => {
+        const userForLogin = {
+          username: this.registerForm.value.username,
+          password: this.registerForm.value.password
+        };
+        this.authService.login(userForLogin).subscribe(
+          (res) => {
+            console.log(res);
+          }, (err) => {
+            console.log(err);
+          }
+        );
+      }, (err) => {
+        this.messageService.add({ severity: 'error', summary: 'Oops!', detail: err.error });
+      }
+    );
   }
 
   private initForms() {
@@ -34,8 +53,8 @@ export class HomeComponent implements OnInit {
 
     this.registerForm = new FormGroup({
       username: new FormControl(null, [Validators.required, Validators.minLength(6), Validators.maxLength(20)]),
-      password: new FormControl(null, [Validators.required, Validators.minLength(5), Validators.maxLength(8)]),
-      email: new FormControl(null, [Validators.required, Validators.email])
+      password: new FormControl(null, [Validators.required, Validators.minLength(5), Validators.maxLength(8), Validators.pattern(this.passwordRegex)]),
+      email: new FormControl(null, [Validators.required, Validators.pattern(this.emailRegex)])
     });
   }
 }

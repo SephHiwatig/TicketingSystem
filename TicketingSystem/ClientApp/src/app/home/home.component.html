@@ -10,15 +10,21 @@
   <form class="register-form" [formGroup]="registerForm" (ngSubmit)="onRegister()">
     <span>Not a team member?</span>
     <input formControlName="username" type="text" class="username-input" placeholder="Username" />
-    <ul class="input-validation-messages">
+    <ul class="input-validation-messages"
+        *ngIf="registerForm.controls.username.touched && registerForm.controls.username.status == 'INVALID'">
       <li>Username must contain 6 - 20 characters</li>
     </ul>
     <input formControlName="password" type="password" class="password-input" placeholder="Password" />
-    <ul class="input-validation-messages">
-      <li>Password must contain 5 - 8 characters</li>
+    <ul class="input-validation-messages"
+        *ngIf="registerForm.controls.password.touched && registerForm.controls.password.status == 'INVALID'">
+      <li>Password requirements:</li>
+      <li>-Must contain 5 - 8 characters</li>
+      <li>-Must contain atleast 1 number</li>
+      <li>-Must contain atleast 1 uppercase letter </li>
     </ul>
     <input formControlName="email" type="email" class="password-input" placeholder="Email" />
-    <ul class="input-validation-messages">
+    <ul class="input-validation-messages"
+        *ngIf="registerForm.controls.email.touched && registerForm.controls.email.status == 'INVALID'">
       <li>Invalid email address</li>
     </ul>
     <button pButton type="submit" class="ui-button-raised" label="Register" [disabled]="registerForm.status === 'INVALID'"></button>

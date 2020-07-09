@@ -68,6 +68,14 @@ namespace DAL.Repositories
             return false;
         }
 
+        public async Task<bool> EmailInUse(string email)
+        {
+            if (await _ticketContext.Users.AnyAsync(x => x.Email == email))
+                return true;
+
+            return false;
+        }
+
         public bool IsValidEmail(string email)
         {
             if (string.IsNullOrWhiteSpace(email))
@@ -119,6 +127,7 @@ namespace DAL.Repositories
         Task<Users> Register(Users user, string password);
         Task<Users> Login(string username, string password);
         Task<bool> UserExists(string username);
+        Task<bool> EmailInUse(string email);
         bool IsValidEmail(string email);
     }
 }

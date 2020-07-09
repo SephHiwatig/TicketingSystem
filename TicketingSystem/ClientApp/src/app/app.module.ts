@@ -14,6 +14,8 @@ import { HomeComponent } from './home/home.component';
 import { MenubarModule } from 'primeng/menubar';
 import { ButtonModule } from 'primeng/button';
 import { DropdownModule } from 'primeng/dropdown';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
 
 @NgModule({
   declarations: [
@@ -30,9 +32,12 @@ import { DropdownModule } from 'primeng/dropdown';
     MenubarModule,
     ButtonModule,
     DropdownModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ToastModule
   ],
-  providers: [],
+  providers: [
+    MessageService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

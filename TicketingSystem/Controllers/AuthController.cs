@@ -45,6 +45,9 @@ namespace TicketingSystem.Controllers
             if (await _authRepository.UserExists(userForRegisterDto.Username))
                 return BadRequest("Username already exists");
 
+            if (await _authRepository.EmailInUse(userForRegisterDto.Email))
+                return BadRequest("Email already in use");
+
             if(!_authRepository.IsValidEmail(userForRegisterDto.Email))
             {
                 return BadRequest("Invalid email address");
