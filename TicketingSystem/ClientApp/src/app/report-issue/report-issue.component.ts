@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SelectItem } from 'primeng-lts/api';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-report-issue',
@@ -12,10 +13,14 @@ export class ReportIssueComponent implements OnInit {
   developers: SelectItem[];
   severity: SelectItem[];
   priority: SelectItem[];
+  reportIssueForm: FormGroup;
 
   constructor() { }
 
   ngOnInit() {
+
+    this.initReportIssueForm();
+
     this.projects = [
       { label: 'Select City', value: null },
       { label: 'New York', value: { id: 1, name: 'New York', code: 'NY' } },
@@ -50,4 +55,19 @@ export class ReportIssueComponent implements OnInit {
     ];
   }
 
+  onSubmitRerpotIssueForm() {
+    console.log(this.reportIssueForm);
+  }
+
+  private initReportIssueForm() {
+    this.reportIssueForm = new FormGroup({
+      project: new FormControl(null, Validators.required),
+      assignTo: new FormControl(null, Validators.required),
+      severity: new FormControl(null, Validators.required),
+      priority: new FormControl(null, Validators.required),
+      title: new FormControl(null, [Validators.required, Validators.maxLength(255)]),
+      summary: new FormControl(null, [Validators.required, Validators.maxLength(255)]),
+      comment: new FormControl(null, Validators.maxLength(255))
+    });
+  }
 }

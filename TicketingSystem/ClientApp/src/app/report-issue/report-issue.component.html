@@ -1,5 +1,5 @@
 <section class="report-section">
-  <form class="report-issue-form">
+  <form class="report-issue-form" [formGroup]="reportIssueForm" (ngSubmit)="onSubmitRerpotIssueForm()">
     <div class="form-header">
       <h1>Enter Issue Details</h1>
     </div>
@@ -9,7 +9,7 @@
           Project
         </div>
         <div class="content-input">
-          <p-dropdown [options]="projects"></p-dropdown>
+          <p-dropdown [options]="projects" formControlName="project"></p-dropdown>
         </div>
       </div>
       <div>
@@ -17,7 +17,7 @@
           Assign To
         </div>
         <div class="content-input">
-          <p-dropdown [options]="developers"></p-dropdown>
+          <p-dropdown [options]="developers" formControlName="assignTo"></p-dropdown>
         </div>
       </div>
       <div>
@@ -25,7 +25,7 @@
           Severity
         </div>
         <div class="content-input">
-          <p-dropdown [options]="severity"></p-dropdown>
+          <p-dropdown [options]="severity" formControlName="severity"></p-dropdown>
         </div>
       </div>
       <div>
@@ -33,7 +33,7 @@
           Priority
         </div>
         <div class="content-input">
-          <p-dropdown [options]="priority"></p-dropdown>
+          <p-dropdown [options]="priority" formControlName="priority"></p-dropdown>
         </div>
       </div>
       <div>
@@ -41,7 +41,7 @@
           Title
         </div>
         <div class="content-input">
-          <input type="text" pInputText class="txtInput"/>
+          <input type="text" pInputText class="txtInput" formControlName="title"/>
         </div>
       </div>
       <div>
@@ -49,7 +49,7 @@
           Summary
         </div>
         <div class="content-input">
-          <textarea pInputTextarea class="txtArea" [rows]="5"></textarea>
+          <textarea pInputTextarea class="txtArea" [rows]="5" formControlName="summary"></textarea>
         </div>
       </div>
       <div>
@@ -57,7 +57,7 @@
           Comment
         </div>
         <div class="content-input">
-          <textarea pInputTextarea class="txtArea" [rows]="5"></textarea>
+          <textarea pInputTextarea class="txtArea" [rows]="5" formControlName="comment"></textarea>
         </div>
       </div>
     </div>

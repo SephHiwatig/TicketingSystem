@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DAL.Repositories;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -8,5 +9,11 @@ namespace DAL.UnitOfWork
     {
         void Save();
         void Dispose();
+
+        ProjectRepository Projects { get; }
+        UserRepository Users { get; }
+        SeverityRepository Severities { get; }
+        PriorityRepository Priorities { get; }
+        TicketRepository Tickets { get; }
     }
 }
