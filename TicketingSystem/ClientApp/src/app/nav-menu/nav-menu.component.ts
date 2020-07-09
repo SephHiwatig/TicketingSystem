@@ -14,4 +14,8 @@ export class NavMenuComponent implements OnInit {
   ngOnInit() {
 
   }
+
+  onLogout() {
+    this.authService.logout();
+  }
 }

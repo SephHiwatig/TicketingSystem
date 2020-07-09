@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MessageService } from 'primeng-lts/components/common/messageservice';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -15,16 +16,20 @@ export class HomeComponent implements OnInit {
   passwordRegex: string = '(?=^.{8,}$)(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\\s)[0-9a-zA-Z!@#$%^&*()]*$';
   emailRegex: string = '^([a-zA-Z0-9_\\-\\.]+)@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.)|(([a-zA-Z0-9\\-]+\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\\]?)$';
 
-  constructor(private authService: AuthService, private messageService: MessageService) { }
+  constructor(private authService: AuthService,
+    private messageService: MessageService,
+    private router: Router) { }
 
   ngOnInit() {
+    if (this.authService.isAuthorized) {
+      this.router.navigate(['dashboard']);
+    }
     this.initForms();
   }
 
   onLogin() {
     this.authService.login(this.loginForm.value).subscribe(
       () => {
-        this.messageService.add({ severity: 'success', summary: 'Login successful', detail: "Welcome " + this.authService.decodedToken.unique_name });
       }, () => {
         this.messageService.add({ severity: 'error', summary: 'Failed', detail: "Invalid Username or Password" });
       }
@@ -40,7 +45,6 @@ export class HomeComponent implements OnInit {
         };
         this.authService.login(userForLogin).subscribe(
           (res) => {
-            this.messageService.add({ severity: 'success', summary: 'Login successful', detail: "Welcome " + this.authService.decodedToken.unique_name });
           }, (err) => {
             this.messageService.add({ severity: 'error', summary: 'Sorry', detail: "Something went wrong"});
           }
