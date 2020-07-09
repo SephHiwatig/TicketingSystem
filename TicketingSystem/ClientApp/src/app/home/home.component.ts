@@ -22,7 +22,13 @@ export class HomeComponent implements OnInit {
   }
 
   onLogin() {
-    console.log(this.loginForm);
+    this.authService.login(this.loginForm.value).subscribe(
+      () => {
+        this.messageService.add({ severity: 'success', summary: 'Login successful', detail: "Welcome " + this.authService.decodedToken.unique_name });
+      }, () => {
+        this.messageService.add({ severity: 'error', summary: 'Failed', detail: "Invalid Username or Password" });
+      }
+    );
   }
 
   onRegister() {
@@ -34,9 +40,9 @@ export class HomeComponent implements OnInit {
         };
         this.authService.login(userForLogin).subscribe(
           (res) => {
-            console.log(res);
+            this.messageService.add({ severity: 'success', summary: 'Login successful', detail: "Welcome " + this.authService.decodedToken.unique_name });
           }, (err) => {
-            console.log(err);
+            this.messageService.add({ severity: 'error', summary: 'Sorry', detail: "Something went wrong"});
           }
         );
       }, (err) => {
