@@ -19,6 +19,7 @@ export class ReportIssueComponent implements OnInit {
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
+    // Get Form Data from route resolver
     this.route.data.subscribe(data => {
       this.projects.push({ label: 'Select Project', value: null });
       data['formData']['projects'].forEach(proj => {
@@ -42,7 +43,7 @@ export class ReportIssueComponent implements OnInit {
   }
 
   onSubmitRerpotIssueForm() {
-    console.log(this.reportIssueForm);
+    console.log(this.reportIssueForm.value);
   }
 
   private initReportIssueForm() {

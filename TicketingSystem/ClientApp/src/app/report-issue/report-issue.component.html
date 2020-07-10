@@ -62,7 +62,7 @@
       </div>
     </div>
     <div class="form-footer">
-      <p-button label="Submit Issue" styleClass="ui-button-info ui-button-raised"></p-button>
+      <p-button label="Submit Issue" styleClass="ui-button-info ui-button-raised" [disabled]="reportIssueForm.status === 'INVALID'"></p-button>
     </div>
   </form>
 </section>
