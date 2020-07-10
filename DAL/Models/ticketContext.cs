@@ -24,6 +24,7 @@ namespace DAL.Models
         public virtual DbSet<Tickets> Tickets { get; set; }
         public virtual DbSet<Userroles> Userroles { get; set; }
         public virtual DbSet<Users> Users { get; set; }
+        public virtual DbSet<Timeline> Timelines { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -236,6 +237,42 @@ namespace DAL.Models
                     .HasForeignKey(d => d.StatusId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Ticket_Status");
+            });
+
+            modelBuilder.Entity<Timeline>(entity =>
+            {
+                entity.HasKey(e => e.TimelineId)
+                    .HasName("PRIMARY");
+
+                entity.HasIndex(e => e.TicketId)
+                    .HasName("FK_Timeline_Ticket");
+
+                entity.HasIndex(e => e.DoneBy)
+                    .HasName("FK_Timeline_User");
+
+                entity.Property(e => e.TicketId).HasColumnType("int(11)");
+
+                entity.Property(e => e.DoneBy).HasColumnType("int(11)");
+
+                entity.Property(e => e.ActionDate).HasColumnType("date");
+
+                entity.Property(e => e.Action)
+                   .IsRequired()
+                   .HasColumnType("varchar(30)")
+                   .HasCharSet("latin1")
+                   .HasCollation("latin1_swedish_ci");
+
+                entity.HasOne(d => d.Ticket)
+                    .WithMany(p => p.Timelines)
+                    .HasForeignKey(d => d.TicketId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Timeline_Ticket");
+
+                entity.HasOne(d => d.DoneByNavigation)
+                    .WithMany(p => p.Timelines)
+                    .HasForeignKey(d => d.DoneBy)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Timeline_User");
             });
 
             modelBuilder.Entity<Userroles>(entity =>

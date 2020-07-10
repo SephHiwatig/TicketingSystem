@@ -8,6 +8,7 @@ namespace DAL.Models
         public Tickets()
         {
             Comments = new HashSet<Comments>();
+            Timelines = new HashSet<Timeline>();
         }
 
         public int TicketId { get; set; }
@@ -28,5 +29,6 @@ namespace DAL.Models
         public virtual Severities Severity { get; set; }
         public virtual Statuses Status { get; set; }
         public virtual ICollection<Comments> Comments { get; set; }
+        public virtual ICollection<Timeline> Timelines { get; set; }
     }
 }

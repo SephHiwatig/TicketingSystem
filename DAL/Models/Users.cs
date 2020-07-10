@@ -11,6 +11,7 @@ namespace DAL.Models
             TicketsAssignedToNavigation = new HashSet<Tickets>();
             TicketsCreatedByNavigation = new HashSet<Tickets>();
             Userroles = new HashSet<Userroles>();
+            Timelines = new HashSet<Timeline>();
         }
 
         public int UserId { get; set; }
@@ -23,5 +24,6 @@ namespace DAL.Models
         public virtual ICollection<Tickets> TicketsAssignedToNavigation { get; set; }
         public virtual ICollection<Tickets> TicketsCreatedByNavigation { get; set; }
         public virtual ICollection<Userroles> Userroles { get; set; }
+        public virtual ICollection<Timeline> Timelines { get; set; }
     }
 }
