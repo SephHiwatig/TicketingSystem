@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.Text.Json.Serialization;
+using System;
 using System.Collections.Generic;
 
 namespace DAL.Models
@@ -13,6 +14,7 @@ namespace DAL.Models
         public int PriorityId { get; set; }
         public string Description { get; set; }
 
+        [JsonIgnore]
         public virtual ICollection<Tickets> Tickets { get; set; }
     }
 }

@@ -32,7 +32,11 @@
 
   <ItemGroup>
     <None Remove="ClientApp\src\app\app-routing.module.ts" />
+    <None Remove="ClientApp\src\app\helpers\Helper.ts" />
+    <None Remove="ClientApp\src\app\report-issue\report-issue.resolver.ts" />
+    <None Remove="ClientApp\src\app\_models\report-form-data.model.ts" />
     <None Remove="ClientApp\src\app\_services\auth.service.ts" />
+    <None Remove="ClientApp\src\app\_services\ticket.service.ts" />
   </ItemGroup>
 
   <ItemGroup>
@@ -41,7 +45,11 @@
 
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\app\app-routing.module.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\helpers\Helper.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\report-issue\report-issue.resolver.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\_models\report-form-data.model.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\_services\auth.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\_services\ticket.service.ts" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

@@ -23,6 +23,7 @@ import { ToastModule } from 'primeng/toast';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { MessageService } from 'primeng/api';
 import { InputTextModule } from 'primeng/inputtext';
+import { ReportIssueResolver } from './report-issue/report-issue.resolver';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { InputTextModule } from 'primeng/inputtext';
     InputTextModule
   ],
   providers: [
-    MessageService
+    MessageService,
+    ReportIssueResolver
   ],
   bootstrap: [AppComponent]
 })

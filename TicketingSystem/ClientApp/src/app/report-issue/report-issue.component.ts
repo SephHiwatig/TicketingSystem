@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SelectItem } from 'primeng-lts/api';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-report-issue',
@@ -9,50 +10,35 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class ReportIssueComponent implements OnInit {
 
-  projects: SelectItem[];
-  developers: SelectItem[];
-  severity: SelectItem[];
-  priority: SelectItem[];
+  projects: SelectItem[] = [];
+  developers: SelectItem[] = [];
+  severities: SelectItem[] = [];
+  priorities: SelectItem[] = [];
   reportIssueForm: FormGroup;
 
-  constructor() { }
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.route.data.subscribe(data => {
+      this.projects.push({ label: 'Select Project', value: null });
+      data['formData']['projects'].forEach(proj => {
+        this.projects.push({ label: proj.projectName, value: proj.projectId });
+      });
+      this.developers.push({ label: 'Select User', value: null });
+      data['formData']['users'].forEach(user => {
+        this.developers.push({ label: user.username, value: user.userId });
+      });
+      this.severities.push({ label: 'Select Severity', value: null });
+      data['formData']['severities'].forEach(severity => {
+        this.severities.push({ label: severity.description, value: severity.severityId });
+      });
+      this.priorities.push({ label: 'Select Priority', value: null });
+      data['formData']['priorities'].forEach(priority => {
+        this.priorities.push({ label: priority.description, value: priority.priorityId });
+      });
+    })
 
     this.initReportIssueForm();
-
-    this.projects = [
-      { label: 'Select City', value: null },
-      { label: 'New York', value: { id: 1, name: 'New York', code: 'NY' } },
-      { label: 'Rome', value: { id: 2, name: 'Rome', code: 'RM' } },
-      { label: 'London', value: { id: 3, name: 'London', code: 'LDN' } },
-      { label: 'Istanbul', value: { id: 4, name: 'Istanbul', code: 'IST' } },
-      { label: 'Paris', value: { id: 5, name: 'Paris', code: 'PRS' } }
-    ];
-    this.developers = [
-      { label: 'Select City', value: null },
-      { label: 'New York', value: { id: 1, name: 'New York', code: 'NY' } },
-      { label: 'Rome', value: { id: 2, name: 'Rome', code: 'RM' } },
-      { label: 'London', value: { id: 3, name: 'London', code: 'LDN' } },
-      { label: 'Istanbul', value: { id: 4, name: 'Istanbul', code: 'IST' } },
-      { label: 'Paris', value: { id: 5, name: 'Paris', code: 'PRS' } }
-    ];
-    this.severity = [
-      { label: 'Select City', value: null },
-      { label: 'New York', value: { id: 1, name: 'New York', code: 'NY' } },
-      { label: 'Rome', value: { id: 2, name: 'Rome', code: 'RM' } },
-      { label: 'London', value: { id: 3, name: 'London', code: 'LDN' } },
-      { label: 'Istanbul', value: { id: 4, name: 'Istanbul', code: 'IST' } },
-      { label: 'Paris', value: { id: 5, name: 'Paris', code: 'PRS' } }
-    ];
-    this.priority = [
-      { label: 'Select City', value: null },
-      { label: 'New York', value: { id: 1, name: 'New York', code: 'NY' } },
-      { label: 'Rome', value: { id: 2, name: 'Rome', code: 'RM' } },
-      { label: 'London', value: { id: 3, name: 'London', code: 'LDN' } },
-      { label: 'Istanbul', value: { id: 4, name: 'Istanbul', code: 'IST' } },
-      { label: 'Paris', value: { id: 5, name: 'Paris', code: 'PRS' } }
-    ];
   }
 
   onSubmitRerpotIssueForm() {

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace DAL.Models
 {
@@ -13,6 +14,7 @@ namespace DAL.Models
         public int ProjectId { get; set; }
         public string ProjectName { get; set; }
 
+        [JsonIgnore]
         public virtual ICollection<Tickets> Tickets { get; set; }
     }
 }

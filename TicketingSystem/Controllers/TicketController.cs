@@ -12,7 +12,7 @@ using TicketingSystem.Dtos;
 
 namespace TicketingSystem.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class TicketController : ControllerBase
