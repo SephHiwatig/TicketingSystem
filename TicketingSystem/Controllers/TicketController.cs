@@ -30,20 +30,27 @@ namespace TicketingSystem.Controllers
         [HttpGet("report-form-data")]
         public IActionResult GetReportFormData()
         {
-            var projects = _ticketUoW.Projects.GetAll();
-            var users = _ticketUoW.Users.GetAll();
-            var severities = _ticketUoW.Severities.GetAll();
-            var priorities = _ticketUoW.Priorities.GetAll();
-
-            var userFormData = _mapper.Map<IEnumerable<UserFormDataDto>>(users);
-
-            return Ok(new
+            try
             {
-                projects,
-                users = userFormData,
-                severities,
-                priorities
-            });
+                var projects = _ticketUoW.Projects.GetAll().ToArray();
+                var users = _ticketUoW.Users.GetAll().ToArray();
+                var severities = _ticketUoW.Severities.GetAll().ToArray();
+                var priorities = _ticketUoW.Priorities.GetAll().ToArray();
+
+                var userFormData = _mapper.Map<IEnumerable<UserFormDataDto>>(users);
+
+                return Ok(new
+                {
+                    projects,
+                    users = userFormData,
+                    severities,
+                    priorities
+                });
+            }
+            catch (Exception e)
+            {
+                return Conflict(e);
+            }
         }
     }
 }
