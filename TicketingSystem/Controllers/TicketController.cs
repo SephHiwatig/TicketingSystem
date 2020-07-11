@@ -73,9 +73,6 @@ namespace TicketingSystem.Controllers
                 StatusId = 1
             };
 
-            _ticketUoW.Tickets.Insert(newTicket);
-            _ticketUoW.Save();
-
             if (!string.IsNullOrEmpty(reportIssueForm.Comment))
             {
                 var newComment = new Comments()
@@ -85,8 +82,7 @@ namespace TicketingSystem.Controllers
                     UserId = currentUserId,
                     TicketId = newTicket.TicketId
                 };
-
-                _ticketUoW.Comments.Insert(newComment);
+                newTicket.Comments.Add(newComment);
             }
 
             var newTimeline = new Timeline()
@@ -96,9 +92,9 @@ namespace TicketingSystem.Controllers
                 Action = "create",
                 ActionDate = DateTime.Now
             };
+            newTicket.Timelines.Add(newTimeline);
 
-            _ticketUoW.Timeline.Insert(newTimeline);
-
+            _ticketUoW.Tickets.Insert(newTicket);
             _ticketUoW.Save();
 
             return StatusCode(201);
