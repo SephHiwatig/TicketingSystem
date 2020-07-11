@@ -15,5 +15,7 @@ namespace DAL.UnitOfWork
         SeverityRepository Severities { get; }
         PriorityRepository Priorities { get; }
         TicketRepository Tickets { get; }
+        CommentRepository Comments { get; }
+        TimelineRepository Timeline { get; }
     }
 }

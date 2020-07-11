@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SelectItem } from 'primeng-lts/api';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { TicketService } from '../_services/ticket.service';
 
 @Component({
   selector: 'app-report-issue',
@@ -16,7 +17,7 @@ export class ReportIssueComponent implements OnInit {
   priorities: SelectItem[] = [];
   reportIssueForm: FormGroup;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private ticketService: TicketService) { }
 
   ngOnInit() {
     // Get Form Data from route resolver
@@ -43,7 +44,7 @@ export class ReportIssueComponent implements OnInit {
   }
 
   onSubmitRerpotIssueForm() {
-    console.log(this.reportIssueForm.value);
+    this.ticketService.submitIssue(this.reportIssueForm.value);
   }
 
   private initReportIssueForm() {

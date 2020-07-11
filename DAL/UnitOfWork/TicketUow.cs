@@ -25,7 +25,9 @@ namespace DAL.UnitOfWork
 
         public TicketRepository Tickets => new TicketRepository(_context);
 
+        public CommentRepository Comments => new CommentRepository(_context);
 
+        public TimelineRepository Timeline => new TimelineRepository(_context);
 
         public void Save()
         {

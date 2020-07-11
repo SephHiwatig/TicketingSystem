@@ -26,7 +26,6 @@ namespace DAL.Models
         public virtual DbSet<Users> Users { get; set; }
         public virtual DbSet<Timeline> Timelines { get; set; }
 
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Comments>(entity =>

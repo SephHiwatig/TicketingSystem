@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using AutoMapper;
+using DAL.Models;
 using DAL.Repositories;
 using DAL.UnitOfWork;
 using Microsoft.AspNetCore.Authorization;
@@ -51,6 +53,55 @@ namespace TicketingSystem.Controllers
             {
                 return Conflict(e);
             }
+        }
+
+        [HttpPost("report-issue")]
+        public IActionResult SubmitIssue(ReportIssueFormDto reportIssueForm)
+        {
+            var currentUserId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+            var newTicket = new Tickets()
+            {
+                ProjectId = reportIssueForm.Project,
+                AssignedTo = reportIssueForm.AssignTo,
+                CreatedBy = currentUserId,
+                DateCreated = DateTime.Now,
+                Title = reportIssueForm.Title,
+                Summary = reportIssueForm.Summary,
+                SeverityId = reportIssueForm.Severity,
+                PriorityId = reportIssueForm.Priority,
+                StatusId = 1
+            };
+
+            _ticketUoW.Tickets.Insert(newTicket);
+            _ticketUoW.Save();
+
+            if (!string.IsNullOrEmpty(reportIssueForm.Comment))
+            {
+                var newComment = new Comments()
+                {
+                    Comment = reportIssueForm.Comment,
+                    CommentDate = DateTime.Now,
+                    UserId = currentUserId,
+                    TicketId = newTicket.TicketId
+                };
+
+                _ticketUoW.Comments.Insert(newComment);
+            }
+
+            var newTimeline = new Timeline()
+            {
+                TicketId = newTicket.TicketId,
+                DoneBy = currentUserId,
+                Action = "create",
+                ActionDate = DateTime.Now
+            };
+
+            _ticketUoW.Timeline.Insert(newTimeline);
+
+            _ticketUoW.Save();
+
+            return StatusCode(201);
         }
     }
 }

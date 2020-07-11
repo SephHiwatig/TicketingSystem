@@ -879,7 +879,7 @@
       ]
     },
     "Microsoft.NETCore.Platforms/1.1.0": {
-      "sha512": "kz0PEW2lhqygehI/d6XsPCQzD7ff7gUJaVGPVETX611eadGsA3A877GdSlU0LRVMCTH/+P3o2iDTak+S08V2+A==",
+      "sha512": "AHWyWmjGx4SYhUMVU7B0r14yeDglJhv/7uPIYYWP7WDAxDXM4JUElERj6mCvge7TwiuDh+RucEk4emzSim3p8Q==",
       "type": "package",
       "path": "microsoft.netcore.platforms/1.1.0",
       "files": [
@@ -894,7 +894,7 @@
       ]
     },
     "Microsoft.NETCore.Targets/1.1.0": {
-      "sha512": "aOZA3BWfz9RXjpzt0sRJJMjAscAUm3Hoa4UWAfceV9UTYxgwZ1lZt5nO2myFf+/jetYQo4uTP7zS8sJY67BBxg==",
+      "sha512": "bPwpkPj7bWaAnMStJ5LWA1pEYeSn44rvlo7b3IxFLoo48kRzCY2z7fAGQGqmR6kCAXCtCEoM5yQkuqon6qZgMg==",
       "type": "package",
       "path": "microsoft.netcore.targets/1.1.0",
       "files": [
@@ -1129,7 +1129,7 @@
       ]
     },
     "System.IO/4.3.0": {
-      "sha512": "3qjaHvxQPDpSOYICjUoTsmoq5u6QJAFRUITgeT/4gqkF1bajbSmb1kwSxEA8AHlofqgcKJcM8udgieRNhaJ5Cg==",
+      "sha512": "0LdlFcEACNnap0XxIf8dkfrcHKd7SUPMYrfVK0AOKYrm9jQ96plS3N9pgFt13rlMaWCczPHXI3XRzYNmMiSCSg==",
       "type": "package",
       "path": "system.io/4.3.0",
       "files": [
@@ -1209,7 +1209,7 @@
       ]
     },
     "System.Reflection/4.3.0": {
-      "sha512": "KMiAFoW7MfJGa9nDFNcfu+FpEdiHpWgTcS2HdMpDvt9saK3y/G4GwprPyzqjFH9NTaGPQeWNHU+iDlDILj96aQ==",
+      "sha512": "dMrkczLh3NcoYIuS3nC3SF9nCAGIOC1rmlZFy7bAiYfkZLvSFNsjAP7RsXOqE97EXMxggQzNwAUwzBPmKIZ3lQ==",
       "type": "package",
       "path": "system.reflection/4.3.0",
       "files": [
@@ -1289,7 +1289,7 @@
       ]
     },
     "System.Reflection.Emit/4.3.0": {
-      "sha512": "228FG0jLcIwTVJyz8CLFKueVqQK36ANazUManGaJHkO0icjiIypKW7YLWLIWahyIkdh5M7mV2dJepllLyA1SKg==",
+      "sha512": "m5jJjMruUC4ay426xYd40DMHPOun3mr4v5TCYGTazDRuqJWhqI8toCz05RDsXI7IcH4V957unMCchNLZR7320g==",
       "type": "package",
       "path": "system.reflection.emit/4.3.0",
       "files": [
@@ -1325,7 +1325,7 @@
       ]
     },
     "System.Reflection.Emit.ILGeneration/4.3.0": {
-      "sha512": "59tBslAk9733NXLrUJrwNZEzbMAcu8k344OYo+wfSVygcgZ9lgBdGIzH/nrg3LYhXceynyvTc8t5/GD4Ri0/ng==",
+      "sha512": "lJuCR0GsDMrZ26nLV8T+H0XC6tn85xx0LH4PqNBNE0mMzv2kymU55kpThelvld4rpH0WPColJlhBB3gJyOQc6w==",
       "type": "package",
       "path": "system.reflection.emit.ilgeneration/4.3.0",
       "files": [
@@ -1370,7 +1370,7 @@
       ]
     },
     "System.Reflection.Primitives/4.3.0": {
-      "sha512": "5RXItQz5As4xN2/YUDxdpsEkMhvw3e6aNveFXUn4Hl/udNTCNhnKp8lT9fnc3MhvGKh1baak5CovpuQUXHAlIA==",
+      "sha512": "tQsiNDcMNGDSoOq0elpo2oatm56YZ61n/YxCcctUCalS3WPoyEQXNY3rRGCaiDpahi4CEEgvXJuJd/2grYfWHg==",
       "type": "package",
       "path": "system.reflection.primitives/4.3.0",
       "files": [
@@ -1426,7 +1426,7 @@
       ]
     },
     "System.Runtime/4.3.0": {
-      "sha512": "JufQi0vPQ0xGnAczR13AUFglDyVYt4Kqnz1AZaiKZ5+GICq0/1MH/mO/eAJHt/mHW1zjKBJd7kV26SrxddAhiw==",
+      "sha512": "oc3XeXA75z0ClaBxIkecwMDRsCdc81AMjiJlDKWXKzeNZWKnp8K2n5R1R5EERRSNiXYqTR5TCcnszww8Ew84iQ==",
       "type": "package",
       "path": "system.runtime/4.3.0",
       "files": [
@@ -1517,7 +1517,7 @@
       ]
     },
     "System.Text.Encoding/4.3.0": {
-      "sha512": "BiIg+KWaSDOITze6jGQynxg64naAPtqGHBwDrLaCtixsa5bKiR8dpPOHA7ge3C0JJQizJE+sfkz1wV+BAKAYZw==",
+      "sha512": "OxAOPjAgaAjR2LYwxS5jtvmq9XmSF/Tyl7r5nhWsoElhogMc2cwczb/1EWSN8Ql/EAfM5X4HgPV5TeevQNj7Jw==",
       "type": "package",
       "path": "system.text.encoding/4.3.0",
       "files": [
@@ -1584,7 +1584,7 @@
       ]
     },
     "System.Threading.Tasks/4.3.0": {
-      "sha512": "LbSxKEdOUhVe8BezB/9uOGGppt+nZf6e1VFyw6v3DN6lqitm0OSn2uXMOdtP0M3W4iMcqcivm2J6UgqiwwnXiA==",
+      "sha512": "09yqb825FhqT0mmlWyfdZrQPxMapP0MSeDfK05uQePVXd7Mar7TUbt2CTlY8wzANS5opxstghNdGpcPj1BF9vg==",
       "type": "package",
       "path": "system.threading.tasks/4.3.0",
       "files": [
@@ -1659,24 +1659,27 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\JHiwatig\\.nuget\\packages\\": {},
+    "C:\\Users\\Joseph\\.nuget\\packages\\": {},
+    "C:\\Microsoft\\Xamarin\\NuGet\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\JHiwatig\\source\\repos\\TicketingSystem\\DAL\\DAL.csproj",
+      "projectUniqueName": "C:\\Users\\Joseph\\Desktop\\TicketingSystem\\DAL\\DAL.csproj",
       "projectName": "DAL",
-      "projectPath": "C:\\Users\\JHiwatig\\source\\repos\\TicketingSystem\\DAL\\DAL.csproj",
-      "packagesPath": "C:\\Users\\JHiwatig\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\JHiwatig\\source\\repos\\TicketingSystem\\DAL\\obj\\",
+      "projectPath": "C:\\Users\\Joseph\\Desktop\\TicketingSystem\\DAL\\DAL.csproj",
+      "packagesPath": "C:\\Users\\Joseph\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Joseph\\Desktop\\TicketingSystem\\DAL\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
+        "C:\\Microsoft\\Xamarin\\NuGet\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\JHiwatig\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\Joseph\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
