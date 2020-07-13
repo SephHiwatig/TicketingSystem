@@ -24,6 +24,7 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 import { MessageService } from 'primeng/api';
 import { InputTextModule } from 'primeng/inputtext';
 import { ReportIssueResolver } from './report-issue/report-issue.resolver';
+import {PaginatorModule} from 'primeng/paginator';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { ReportIssueResolver } from './report-issue/report-issue.resolver';
     ReactiveFormsModule,
     ToastModule,
     InputTextareaModule,
-    InputTextModule
+    InputTextModule,
+    PaginatorModule
   ],
   providers: [
     MessageService,

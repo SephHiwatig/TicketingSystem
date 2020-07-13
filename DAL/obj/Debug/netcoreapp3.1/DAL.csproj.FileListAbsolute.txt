@@ -22,3 +22,15 @@ C:\Users\Joseph\Desktop\TicketingSystem\DAL\obj\Debug\netcoreapp3.1\DAL.csproj.C
 C:\Users\Joseph\Desktop\TicketingSystem\DAL\obj\Debug\netcoreapp3.1\DAL.dll
 C:\Users\Joseph\Desktop\TicketingSystem\DAL\obj\Debug\netcoreapp3.1\DAL.pdb
 C:\Users\Joseph\Desktop\TicketingSystem\DAL\obj\Debug\netcoreapp3.1\DAL.genruntimeconfig.cache
+C:\Users\Joseph_dev\Desktop\portfolio\TicketingSystem\DAL\bin\Debug\netcoreapp3.1\DAL.deps.json
+C:\Users\Joseph_dev\Desktop\portfolio\TicketingSystem\DAL\bin\Debug\netcoreapp3.1\DAL.runtimeconfig.json
+C:\Users\Joseph_dev\Desktop\portfolio\TicketingSystem\DAL\bin\Debug\netcoreapp3.1\DAL.runtimeconfig.dev.json
+C:\Users\Joseph_dev\Desktop\portfolio\TicketingSystem\DAL\bin\Debug\netcoreapp3.1\DAL.dll
+C:\Users\Joseph_dev\Desktop\portfolio\TicketingSystem\DAL\bin\Debug\netcoreapp3.1\DAL.pdb
+C:\Users\Joseph_dev\Desktop\portfolio\TicketingSystem\DAL\obj\Debug\netcoreapp3.1\DAL.csprojAssemblyReference.cache
+C:\Users\Joseph_dev\Desktop\portfolio\TicketingSystem\DAL\obj\Debug\netcoreapp3.1\DAL.AssemblyInfoInputs.cache
+C:\Users\Joseph_dev\Desktop\portfolio\TicketingSystem\DAL\obj\Debug\netcoreapp3.1\DAL.AssemblyInfo.cs
+C:\Users\Joseph_dev\Desktop\portfolio\TicketingSystem\DAL\obj\Debug\netcoreapp3.1\DAL.csproj.CoreCompileInputs.cache
+C:\Users\Joseph_dev\Desktop\portfolio\TicketingSystem\DAL\obj\Debug\netcoreapp3.1\DAL.dll
+C:\Users\Joseph_dev\Desktop\portfolio\TicketingSystem\DAL\obj\Debug\netcoreapp3.1\DAL.pdb
+C:\Users\Joseph_dev\Desktop\portfolio\TicketingSystem\DAL\obj\Debug\netcoreapp3.1\DAL.genruntimeconfig.cache

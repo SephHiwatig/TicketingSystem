@@ -1,1 +1,135 @@
-<p>dashboard works!</p>
+<section class="dashboard">
+  <div class="ticket-info">
+    <div>
+      <div class="list-header">
+        <div>
+          <i class="pi pi-list"></i>
+        </div>
+        <div>
+          <h2>My Assigned</h2>
+        </div>
+      </div>
+      <ul class="ticket-list">
+        <li class="ticket-item">
+          <div>
+            <i class="pi pi-thumbs-up icon-ok"></i>
+          </div>
+          <div>
+            <p>
+              <a>0001</a> project <a>AlgoVisualizer</a>, Feature
+            </p>
+            <small>October 12 , 1993</small>
+          </div>
+        </li>
+        <li class="ticket-item">
+          <div>
+            <i class="pi pi-thumbs-up icon-ok"></i>
+          </div>
+          <div>
+            <p>
+              <a>0001</a> project <a>AlgoVisualizer</a>, Minor
+            </p>
+            <small>October 12 , 1993</small>
+          </div>
+        </li>
+        <li class="ticket-item">
+          <div>
+            <i class="pi pi-exclamation-triangle icon-danger"></i>
+          </div>
+          <div>
+            <p>
+              <a>0001</a> project <a>AlgoVisualizer</a>, Crash
+            </p>
+            <small>October 12 , 1993</small>
+          </div>
+        </li>
+      </ul>
+      <p-paginator [rows]="10" [totalRecords]="120" [rowsPerPageOptions]="[10,20,30]" pageLinkSize="3"></p-paginator>
+    </div>
+    <div>
+      <div class="list-header">
+        <div>
+          <i class="pi pi-ticket"></i>
+        </div>
+        <div>
+          <h2>Recent TIckets</h2>
+        </div>
+      </div>
+      <ul class="ticket-list">
+        <li>
+          <p>
+            <a>0001</a> project <a>AlgoVisualizer</a>
+          </p>
+          <small>October 12 , 1993</small>
+        </li>
+        <li>Template</li>
+        <li>Template</li>
+      </ul>
+      <p-paginator [rows]="10" [totalRecords]="120" [rowsPerPageOptions]="[10,20,30]" pageLinkSize="3"></p-paginator>
+    </div>
+    <div>
+      <div class="list-header">
+        <div>
+          <i class="pi pi-check-circle"></i>
+        </div>
+        <div>
+          <h2>Resolved</h2>
+        </div>
+      </div>
+      <ul class="ticket-list">
+        <li>Template</li>
+        <li>Template</li>
+        <li>Template</li>
+      </ul>
+      <p-paginator [rows]="10" [totalRecords]="120" [rowsPerPageOptions]="[10,20,30]" pageLinkSize="3"></p-paginator>
+    </div>
+  </div>
+  <div class="timeline">
+    <div>
+      <div class="list-header">
+        <div>
+          <i class="pi pi-clock"></i>
+        </div>
+        <div>
+          <h2>Timeline</h2>
+        </div>
+      </div>
+      <ul class="ticket-list">
+        <li class="ticket-item">
+          <div>
+            <div class="timeline-status timeline-status-ok"></div>
+          </div>
+          <div>
+            <p>
+              <a>0001</a> opened by <a>Joseph</a>
+            </p>
+            <small>October 12 , 1993</small>
+          </div>
+        </li>
+        <li class="ticket-item">
+          <div>
+            <div class="timeline-status timeline-status-reopened"></div>
+          </div>
+          <div>
+            <p>
+              <a>0001</a> reopened by <a>Joseph</a>
+            </p>
+            <small>October 12 , 1993</small>
+          </div>
+        </li>
+        <li class="ticket-item">
+          <div>
+            <div class="timeline-status timeline-status-closed"></div>
+          </div>
+          <div>
+            <p>
+              <a>0001</a> closed by <a>Joseph</a>
+            </p>
+            <small>October 12 , 1993</small>
+          </div>
+        </li>
+      </ul>
+      <p-paginator [rows]="10" [totalRecords]="120" [rowsPerPageOptions]="[10,20,30]" pageLinkSize="3"></p-paginator>
+    </div>
+  </div>
+</section>
