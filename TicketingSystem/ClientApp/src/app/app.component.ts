@@ -18,7 +18,7 @@ export class AppComponent implements OnInit {
       localStorage.removeItem('token');
     } else if (token && token != null && !this.jwtHelper.isTokenExpired(token)) {
       const { nameid, unique_name } = this.jwtHelper.decodeToken(token);
-      this.authService.userid = nameid;
+      this.authService.userid = +nameid;
       this.authService.username = unique_name;
       this.authService.isAuthorized = true;
     };

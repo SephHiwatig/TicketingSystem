@@ -6,10 +6,4 @@ var ReportFormData = /** @class */ (function () {
     return ReportFormData;
 }());
 exports.ReportFormData = ReportFormData;
-var Field = /** @class */ (function () {
-    function Field() {
-    }
-    return Field;
-}());
-exports.Field = Field;
 //# sourceMappingURL=report-form-data.model.js.map

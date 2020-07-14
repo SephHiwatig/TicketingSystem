@@ -15,7 +15,7 @@ using TicketingSystem.Dtos;
 
 namespace TicketingSystem.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class TicketController : ControllerBase
@@ -129,6 +129,30 @@ namespace TicketingSystem.Controllers
             _ticketUoW.Save();
 
             return StatusCode(201);
+        }
+
+        [HttpPost("reassign")]
+        public IActionResult ReassignTicket(UpdateTicketDto data)
+        {
+            var ticket = _ticketUoW.Tickets.GetByID(data.TicketId);
+            ticket.AssignedTo = data.FieldId;
+
+            _ticketUoW.Tickets.Update(ticket);
+            _ticketUoW.Save();
+
+            return NoContent();
+        }
+
+        [HttpPost("change-status")]
+        public IActionResult ChangeTicketStatus(UpdateTicketDto data)
+        {
+            var ticket = _ticketUoW.Tickets.GetByID(data.TicketId);
+            ticket.StatusId = data.FieldId;
+
+            _ticketUoW.Tickets.Update(ticket);
+            _ticketUoW.Save();
+
+            return NoContent();
         }
     }
 }

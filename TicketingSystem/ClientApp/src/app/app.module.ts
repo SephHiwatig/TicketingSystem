@@ -5,8 +5,11 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 
-// Routing Module
+// Routing / Resolvers
 import { AppRoutingModule } from './app-routing.module';
+import { ReportIssueResolver } from './report-issue/report-issue.resolver';
+import { TicketResolver } from './ticket/ticket.resolver';
+
 
 // Developer defined components
 import { AppComponent } from './app.component';
@@ -14,6 +17,7 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ReportIssueComponent } from './report-issue/report-issue.component';
+import { TicketComponent } from './ticket/ticket.component';
 
 // Primeng
 import { MenubarModule } from 'primeng/menubar';
@@ -23,9 +27,7 @@ import { ToastModule } from 'primeng/toast';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { MessageService } from 'primeng/api';
 import { InputTextModule } from 'primeng/inputtext';
-import { ReportIssueResolver } from './report-issue/report-issue.resolver';
-import {PaginatorModule} from 'primeng/paginator';
-import { TicketComponent } from './ticket/ticket.component';
+import { PaginatorModule } from 'primeng/paginator';
 
 @NgModule({
   declarations: [
@@ -53,7 +55,8 @@ import { TicketComponent } from './ticket/ticket.component';
   ],
   providers: [
     MessageService,
-    ReportIssueResolver
+    ReportIssueResolver,
+    TicketResolver
   ],
   bootstrap: [AppComponent]
 })

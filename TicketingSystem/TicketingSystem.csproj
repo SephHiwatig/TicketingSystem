@@ -35,7 +35,11 @@
     <None Remove="ClientApp\src\app\app-routing.module.ts" />
     <None Remove="ClientApp\src\app\helpers\Helper.ts" />
     <None Remove="ClientApp\src\app\report-issue\report-issue.resolver.ts" />
+    <None Remove="ClientApp\src\app\ticket\ticket.resolver.ts" />
+    <None Remove="ClientApp\src\app\_models\comment.model.ts" />
+    <None Remove="ClientApp\src\app\_models\field.model.ts" />
     <None Remove="ClientApp\src\app\_models\report-form-data.model.ts" />
+    <None Remove="ClientApp\src\app\_models\ticket.model.ts" />
     <None Remove="ClientApp\src\app\_services\auth.service.ts" />
     <None Remove="ClientApp\src\app\_services\ticket.service.ts" />
   </ItemGroup>
@@ -48,7 +52,11 @@
     <TypeScriptCompile Include="ClientApp\src\app\app-routing.module.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\helpers\Helper.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\report-issue\report-issue.resolver.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\ticket\ticket.resolver.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\_models\comment.model.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\_models\field.model.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\_models\report-form-data.model.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\_models\ticket.model.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\_services\auth.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\_services\ticket.service.ts" />
   </ItemGroup>

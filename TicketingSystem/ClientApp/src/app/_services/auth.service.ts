@@ -27,7 +27,7 @@ export class AuthService {
             this.isAuthorized = true;
             localStorage.setItem('token', res.token);
             const { nameid, unique_name } = this.jwtHelper.decodeToken(res.token);
-            this.userid = nameid;
+            this.userid = +nameid;
             this.username = unique_name;
             this.messageService.add({ severity: 'success', summary: 'Login successful', detail: "Welcome " + unique_name });
             this.router.navigate(['dashboard']);

@@ -8,7 +8,7 @@
         Project
       </div>
       <div>
-        AlgoVisualizer
+        {{ticketInfo.ticket.projectName}}
       </div>
     </div>
     <div class="info">
@@ -16,7 +16,7 @@
         Assigned To
       </div>
       <div>
-        Joseph
+        {{ticketInfo.ticket.assignedToNavigation.username}}
       </div>
     </div>
     <div class="info">
@@ -24,7 +24,7 @@
         Repoerted By
       </div>
       <div>
-        Joseph
+        {{ticketInfo.ticket.reportedBy}}
       </div>
     </div>
     <div class="info">
@@ -32,7 +32,7 @@
         Repoerted On
       </div>
       <div>
-        October 12, 1993
+        {{ticketInfo.ticket.dateCreated | date}}
       </div>
     </div>
     <div class="info">
@@ -40,7 +40,7 @@
         Severity
       </div>
       <div>
-        Feature
+        {{ticketInfo.ticket.severity}}
       </div>
     </div>
     <div class="info">
@@ -48,7 +48,7 @@
         Priority
       </div>
       <div>
-        Low
+        {{ticketInfo.ticket.priority}}
       </div>
     </div>
     <div class="info">
@@ -56,7 +56,7 @@
         Title
       </div>
       <div>
-        This is a sample title
+        {{ticketInfo.ticket.title}}
       </div>
     </div>
     <div class="info">
@@ -64,20 +64,24 @@
         Summary
       </div>
       <div>
-        A new feature would be nice! A new feature would be nice!A new feature would be nice!A new feature would be nice!A new feature would be nice!
+        {{ticketInfo.ticket.summary}}
       </div>
     </div>
   </div>
   <div class="ticket-footer">
     <div>
-      <button pButton type="button" class="ui-button-raised" label="Change Status"></button>
+      <button pButton type="button" class="ui-button-raised" label="Change Status"
+              [disabled]="ticketInfo.ticket.assignedToNavigation.userId !== authService.userid"
+              (click)="onChangeStatus()"></button>
       &nbsp;
-      <p-dropdown [options]="statuses"></p-dropdown>
+      <p-dropdown [options]="statuses" [(ngModel)]="newStatusId"></p-dropdown>
     </div>
     <div>
-      <button pButton type="button" class="ui-button-raised ui-button-success" label="Reassign"></button>
+      <button pButton type="button" class="ui-button-raised ui-button-success" label="Reassign"
+              [disabled]="ticketInfo.ticket.assignedToNavigation.userId !== authService.userid"
+              (click)="onReassign()"></button>
       &nbsp;
-      <p-dropdown [options]="statuses"></p-dropdown>
+      <p-dropdown [options]="users" [(ngModel)]="newAssignId"></p-dropdown>
     </div>
   </div>
 </section>
@@ -92,13 +96,9 @@
       <button pButton type="button" class="ui-button-raised" label="Add Comment"></button>
     </div>
     <ul class="comment-list">
-      <li>
-        <p>This is a very long comment explaining what the problme is with the ticket.</p>
-        <div><small style="text-align: right">- October 12, 1993, Joseph</small></div>
-      </li>
-      <li>
-        <p>This is a very long comment explaining what the problme is with the ticket.</p>
-        <div><small style="text-align: right">- October 12, 1993, Joseph</small></div>
+      <li *ngFor="let comment of ticketInfo.ticket.comments">
+        <p>{{comment.comment}}</p>
+        <div><small style="text-align: right">- {{comment.commentDate | date}}, {{comment.user.username}}</small></div>
       </li>
     </ul>
   </div>
