@@ -1,0 +1,105 @@
+<section class="ticket">
+  <div class="header">
+    <h2>Ticket Id: 0001</h2> 
+  </div>
+  <div class="ticket-body">
+    <div class="info">
+      <div>
+        Project
+      </div>
+      <div>
+        AlgoVisualizer
+      </div>
+    </div>
+    <div class="info">
+      <div>
+        Assigned To
+      </div>
+      <div>
+        Joseph
+      </div>
+    </div>
+    <div class="info">
+      <div>
+        Repoerted By
+      </div>
+      <div>
+        Joseph
+      </div>
+    </div>
+    <div class="info">
+      <div>
+        Repoerted On
+      </div>
+      <div>
+        October 12, 1993
+      </div>
+    </div>
+    <div class="info">
+      <div>
+        Severity
+      </div>
+      <div>
+        Feature
+      </div>
+    </div>
+    <div class="info">
+      <div>
+        Priority
+      </div>
+      <div>
+        Low
+      </div>
+    </div>
+    <div class="info">
+      <div>
+        Title
+      </div>
+      <div>
+        This is a sample title
+      </div>
+    </div>
+    <div class="info">
+      <div>
+        Summary
+      </div>
+      <div>
+        A new feature would be nice! A new feature would be nice!A new feature would be nice!A new feature would be nice!A new feature would be nice!
+      </div>
+    </div>
+  </div>
+  <div class="ticket-footer">
+    <div>
+      <button pButton type="button" class="ui-button-raised" label="Change Status"></button>
+      &nbsp;
+      <p-dropdown [options]="statuses"></p-dropdown>
+    </div>
+    <div>
+      <button pButton type="button" class="ui-button-raised ui-button-success" label="Reassign"></button>
+      &nbsp;
+      <p-dropdown [options]="statuses"></p-dropdown>
+    </div>
+  </div>
+</section>
+
+<section class="ticket">
+  <div class="header">
+    <h2>Comments</h2>
+  </div>
+  <div class="comment-body">
+    <div class="new-comment">
+      <textarea pInputTextarea class="txtArea" [rows]="5"></textarea>
+      <button pButton type="button" class="ui-button-raised" label="Add Comment"></button>
+    </div>
+    <ul class="comment-list">
+      <li>
+        <p>This is a very long comment explaining what the problme is with the ticket.</p>
+        <div><small style="text-align: right">- October 12, 1993, Joseph</small></div>
+      </li>
+      <li>
+        <p>This is a very long comment explaining what the problme is with the ticket.</p>
+        <div><small style="text-align: right">- October 12, 1993, Joseph</small></div>
+      </li>
+    </ul>
+  </div>
+</section>

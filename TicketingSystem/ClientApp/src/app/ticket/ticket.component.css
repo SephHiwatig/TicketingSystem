@@ -1,0 +1,90 @@
+.ticket {
+  border-radius: 4px;
+  border: 2px solid #457fca;
+  margin: 5px;
+}
+
+.header {
+  color: #fff;
+  background-color: #457fca;
+  padding: 10px;
+}
+
+.header h2{
+  margin: 0;
+  font-size: medium;
+}
+
+.info {
+  display: flex;
+}
+
+.info div {
+  padding: 10px;
+  border: 1px solid #d1d1d1;
+}
+
+.info div:nth-child(1) {
+  flex: 2;
+  background-color: #94c3ff;
+}
+
+.info div:nth-child(2) {
+    flex: 7;
+}
+
+.ticket-footer {
+  background-color: #ccc;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.ticket-footer div button {
+  min-width: 150px;
+}
+
+.comment-body {
+    padding: 10px;
+}
+
+.txtArea {
+    width: 100%;
+}
+
+.comment-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.comment-list li {
+  background-color: #dbdbdb;
+  border-radius: 4px;
+  padding: 5px;
+  margin-bottom: 5px;
+}
+
+  .comment-list li p {
+    margin-top: 5px;
+    margin-bottom: 10px;
+  }
+
+  .comment-list li div {
+    text-align: right;
+    width: 100%;
+    color: #457fca;
+  }
+
+@media (min-width: 1200px) {
+  .ticket-footer {
+    flex-direction: row;
+  }
+
+  .ticket-footer div {
+    flex: 1;
+  }
+
+  .ticket-footer div:nth-child(2){
+    text-align: right;
+  }
+}

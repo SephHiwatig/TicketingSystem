@@ -25,6 +25,7 @@ import { MessageService } from 'primeng/api';
 import { InputTextModule } from 'primeng/inputtext';
 import { ReportIssueResolver } from './report-issue/report-issue.resolver';
 import {PaginatorModule} from 'primeng/paginator';
+import { TicketComponent } from './ticket/ticket.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import {PaginatorModule} from 'primeng/paginator';
     NavMenuComponent,
     HomeComponent,
     DashboardComponent,
-    ReportIssueComponent
+    ReportIssueComponent,
+    TicketComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
