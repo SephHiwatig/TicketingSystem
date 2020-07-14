@@ -41,7 +41,10 @@ namespace TicketingSystem
             {
                 options.UseMySql(Configuration.GetConnectionString("ticket"), ef => ef.MigrationsAssembly("DAL"));
             });
-
+            services.AddControllersWithViews()
+                .AddNewtonsoftJson(options =>
+                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+            );
             services.AddScoped<ITicketUoW, TicketUow>();
             services.AddScoped<IAuthRepository, AuthRepository>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();

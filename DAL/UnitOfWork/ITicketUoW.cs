@@ -17,5 +17,6 @@ namespace DAL.UnitOfWork
         TicketRepository Tickets { get; }
         CommentRepository Comments { get; }
         TimelineRepository Timeline { get; }
+        StatusRepository Status { get; }
     }
 }

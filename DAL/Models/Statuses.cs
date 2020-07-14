@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 
 namespace DAL.Models
@@ -13,6 +14,7 @@ namespace DAL.Models
         public int StatusId { get; set; }
         public string Description { get; set; }
 
+        [JsonIgnore]
         public virtual ICollection<Tickets> Tickets { get; set; }
     }
 }

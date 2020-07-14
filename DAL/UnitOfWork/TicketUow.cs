@@ -29,6 +29,8 @@ namespace DAL.UnitOfWork
 
         public TimelineRepository Timeline => new TimelineRepository(_context);
 
+        public StatusRepository Status => new StatusRepository(_context);
+
         public void Save()
         {
             this._context.SaveChanges();

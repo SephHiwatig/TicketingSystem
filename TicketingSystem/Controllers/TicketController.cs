@@ -10,11 +10,12 @@ using DAL.UnitOfWork;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using TicketingSystem.Dtos;
 
 namespace TicketingSystem.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class TicketController : ControllerBase
@@ -27,6 +28,36 @@ namespace TicketingSystem.Controllers
         {
             _ticketUoW = ticketUoW;
             _mapper = mapper;
+        }
+
+        [HttpGet("get/{ticketId}")]
+        public async Task<IActionResult> GetTicketById(int ticketId)
+        {
+            var ticket = await _ticketUoW.Tickets.Get(ticket => ticket.TicketId == ticketId)
+                .Include(ticket => ticket.Project)
+                .Include(ticket => ticket.AssignedToNavigation)
+                .Include(ticket => ticket.CreatedByNavigation)
+                .Include(ticket => ticket.Priority)
+                .Include(ticket => ticket.Severity)
+                .Include(ticket => ticket.Comments)
+                    .ThenInclude(comment => comment.User)
+                .FirstOrDefaultAsync();
+
+            if (ticket == null)
+                return NotFound();
+
+            var users = _ticketUoW.Users.GetAll().ToArray();
+            var status = _ticketUoW.Status.GetAll().ToArray();
+
+            var mappedTicket = _mapper.Map<TicketDto>(ticket);
+            var mappedusers = _mapper.Map<IEnumerable<UserFormDataDto>>(users);
+
+            return Ok(new
+            {
+                ticket = mappedTicket,
+                users = mappedusers,
+                status
+            });
         }
 
         [HttpGet("report-form-data")]
