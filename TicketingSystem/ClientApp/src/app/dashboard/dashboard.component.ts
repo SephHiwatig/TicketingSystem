@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { PaginatedResult } from '../_helpers/Pagination';
 import { TicketForDashboard } from '../_models/ticketForDashboard.model';
 import { Timeline } from '../_models/timeline.model';
+import { DashboardService } from '../_services/dashboard.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -16,7 +17,7 @@ export class DashboardComponent implements OnInit {
   resolved: PaginatedResult<TicketForDashboard[]>;
   timeline: PaginatedResult<Timeline[]>;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private dashboardService: DashboardService) { }
 
   ngOnInit() {
     this.route.data.subscribe(data => {
@@ -24,7 +25,6 @@ export class DashboardComponent implements OnInit {
       this.recent = data['data']['recent'];
       this.resolved = data['data']['resolved'];
       this.timeline = data['data']['timeline'];
-      console.log(this.timeline);
     });
   }
 
@@ -36,4 +36,26 @@ export class DashboardComponent implements OnInit {
     return res;
   }
 
+  paginateMyAssigned(event) {
+
+  }
+
+  paginateRecents(event) {
+
+  }
+
+  paginateResolved(event) {
+
+  }
+
+  paginateTimeline(event) {
+    const pageNumber = event.page + 1;
+    const pageSize = event.rows;
+
+    this.dashboardService.getTimeline(pageNumber, pageSize).subscribe(
+      (res) => {
+        this.timeline = res;
+      }
+    );
+  }
 }

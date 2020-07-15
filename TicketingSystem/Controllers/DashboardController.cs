@@ -85,5 +85,20 @@ namespace TicketingSystem.Controllers
             return Ok(dashboard);
         }
 
+        [HttpGet("timeline")]
+        public async Task<IActionResult> GetTimeline([FromQuery]UserParams userParams)
+        {
+            var timeline = _ticketUoW
+                .Timeline
+                .GetAll()
+                .OrderByDescending(x => x.ActionDate)
+                .Include(x => x.DoneByNavigation);
+
+            var pagedTimeline = await PagedList<Timeline>.CreateAsync(timeline, userParams.PageNumber, userParams.PageSize);
+            Response.AddPagination(pagedTimeline.CurrentPage, pagedTimeline.PageSize, pagedTimeline.TotalCount, pagedTimeline.TotalPages);
+            var mappedTimeline = _mapper.Map<IEnumerable<TimelineDto>>(pagedTimeline);
+
+            return Ok(mappedTimeline);
+        }
     }
 }

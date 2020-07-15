@@ -26,7 +26,8 @@
       <p-paginator [rows]="myAssigned.pagination.itemsPerPage"
                    [totalRecords]="myAssigned.pagination.totalItems"
                    [rowsPerPageOptions]="[10,15,20]"
-                   pageLinkSize="3"></p-paginator>
+                   pageLinkSize="3"
+                   (onPageChange)="paginateRecents($event)"></p-paginator>
     </div>
     <div>
       <div class="list-header">
@@ -54,7 +55,8 @@
       <p-paginator [rows]="recent.pagination.itemsPerPage"
                    [totalRecords]="recent.pagination.totalItems"
                    [rowsPerPageOptions]="[10,15,20]"
-                   pageLinkSize="3"></p-paginator>
+                   pageLinkSize="3"
+                   (onPageChange)="paginateRecents($event)"></p-paginator>
     </div>
     <div>
       <div class="list-header">
@@ -81,7 +83,8 @@
       <p-paginator [rows]="resolved.pagination.itemsPerPage"
                    [totalRecords]="resolved.pagination.totalItems"
                    [rowsPerPageOptions]="[10,15,20]"
-                   pageLinkSize="3"></p-paginator>
+                   pageLinkSize="3"
+                   (onPageChange)="paginateResolved($event)"></p-paginator>
     </div>
   </div>
   <div class="timeline">
@@ -115,7 +118,8 @@
       <p-paginator [rows]="timeline.pagination.itemsPerPage"
                    [totalRecords]="timeline.pagination.totalItems"
                    [rowsPerPageOptions]="[10,15,20]"
-                   pageLinkSize="3"></p-paginator>
+                   pageLinkSize="3"
+                   (onPageChange)="paginateTimeline($event)"></p-paginator>
     </div>
   </div>
 </section>

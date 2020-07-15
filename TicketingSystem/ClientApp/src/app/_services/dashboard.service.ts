@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpParams } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { Dashboard } from "../_models/dashboard.model";
 import { environment } from "../../environments/environment";
@@ -41,6 +41,25 @@ export class DashboardService {
             resolved,
             timeline
           };
+        })
+      );
+  }
+
+  getTimeline(pageNumber: number, pageSize: number): Observable<PaginatedResult<Timeline[]>> {
+    const paginatedResult: PaginatedResult<Timeline[]> = new PaginatedResult<Timeline[]>();
+
+    let params = new HttpParams();
+    params = params.append('PageNumber', pageNumber.toString());
+    params = params.append('PageSize', pageSize.toString());
+
+    return this.http.get<Timeline[]>(environment.base_api + 'dashboard/timeline', { headers: Helper.getHeaders(), params: params, observe: 'response' })
+      .pipe(
+        map(response => {
+          paginatedResult.result = response.body;
+          if (response.headers.get('Pagination') != null) {
+            paginatedResult.pagination = JSON.parse(response.headers.get('Pagination'));
+          }
+          return paginatedResult;
         })
       );
   }
