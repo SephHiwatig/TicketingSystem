@@ -24,6 +24,8 @@ namespace TicketingSystem.Helpers
                 .ForMember(dest => dest.Severity,
                     opt => opt.MapFrom(src => src.Severity.Description));
             CreateMap<Tickets, TicketForDashboardDto>();
+            CreateMap<Timeline, TimelineDto>();
+            CreateMap<Projects, ProjectDto>();
         }
     }
 }

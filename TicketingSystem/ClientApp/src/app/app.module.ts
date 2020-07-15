@@ -28,6 +28,7 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 import { MessageService } from 'primeng/api';
 import { InputTextModule } from 'primeng/inputtext';
 import { PaginatorModule } from 'primeng/paginator';
+import { DashboardResolver } from './dashboard/dashboard.resolver';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { PaginatorModule } from 'primeng/paginator';
   providers: [
     MessageService,
     ReportIssueResolver,
-    TicketResolver
+    TicketResolver,
+    DashboardResolver
   ],
   bootstrap: [AppComponent]
 })

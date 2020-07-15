@@ -8,6 +8,7 @@ using DAL.Models;
 using DAL.UnitOfWork;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using TicketingSystem.Dtos;
 using TicketingSystem.Helpers;
 
@@ -32,30 +33,54 @@ namespace TicketingSystem.Controllers
         {
             var myAssigned = _ticketUoW
                 .Tickets
-                .Get(x => x.AssignedTo == int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value));
+                .Get(x => x.AssignedTo == int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                .Include(x => x.Project);
 
-            var pagedMyAssigned = PagedList<Tickets>.CreateAsync(myAssigned, 1, 10);
+            var pagedMyAssigned = await PagedList<Tickets>.CreateAsync(myAssigned, 1, 10);
+            var mappedMyAssigned = _mapper.Map<IEnumerable<TicketForDashboardDto>>(pagedMyAssigned);
+            var myAssignedPagination = new PaginationHeader(1, 10, pagedMyAssigned.TotalCount, pagedMyAssigned.TotalPages);
 
             var recentTickets = _ticketUoW
                 .Tickets
                 .GetAll()
+                .Include(x => x.Project)
                 .OrderByDescending(x => x.DateCreated);
 
-            var pagedRecentTickets = PagedList<Tickets>.CreateAsync(recentTickets, 1, 10);
+            var pagedRecentTickets = await PagedList<Tickets>.CreateAsync(recentTickets, 1, 10);
+            var mappedRecentTickets = _mapper.Map<IEnumerable<TicketForDashboardDto>>(pagedRecentTickets);
+            var recentTicketsPagination = new PaginationHeader(1, 10, pagedRecentTickets.TotalCount, pagedRecentTickets.TotalPages);
 
             var resolved = _ticketUoW
                 .Tickets
-                .Get(x => x.StatusId == 3);
+                .Get(x => x.StatusId == 3)
+                .Include(x => x.Project);
 
-            var pagedResolved = PagedList<Tickets>.CreateAsync(resolved, 1, 10);
+            var pagedResolved = await PagedList<Tickets>.CreateAsync(resolved, 1, 10);
+            var mappedResolved = _mapper.Map<IEnumerable<TicketForDashboardDto>>(pagedResolved);
+            var resolvedPagination = new PaginationHeader(1, 10, pagedResolved.TotalCount, pagedResolved.TotalPages);
 
             var timeline = _ticketUoW
                 .Timeline
-                .GetAll();
+                .GetAll()
+                .Include(x => x.DoneByNavigation);
 
-            var pagedTimeline = PagedList<Timeline>.CreateAsync(timeline, 1, 10);
+            var pagedTimeline = await PagedList<Timeline>.CreateAsync(timeline, 1, 10);
+            var mappedTimeline = _mapper.Map<IEnumerable<TimelineDto>>(pagedTimeline);
+            var timelinePagination = new PaginationHeader(1, 10, pagedTimeline.TotalCount, pagedTimeline.TotalPages);
 
+            var dashboard = new DashboardDto()
+            {
+                MyAssigned = mappedMyAssigned,
+                MyAssignedPagination = myAssignedPagination,
+                RecentTickets = mappedRecentTickets,
+                RecentTicketsPagination = recentTicketsPagination,
+                Resolved = mappedResolved,
+                ResolvedPagination = resolvedPagination,
+                Timeline = mappedTimeline,
+                TimelinePagination = timelinePagination
+            };
 
+            return Ok(dashboard);
         }
 
     }
