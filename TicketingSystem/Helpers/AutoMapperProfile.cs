@@ -23,6 +23,7 @@ namespace TicketingSystem.Helpers
                     opt => opt.MapFrom(src => src.Priority.Description))
                 .ForMember(dest => dest.Severity,
                     opt => opt.MapFrom(src => src.Severity.Description));
+            CreateMap<Tickets, TicketForDashboardDto>();
         }
     }
 }

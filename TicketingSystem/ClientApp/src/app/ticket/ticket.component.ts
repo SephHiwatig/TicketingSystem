@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Ticket } from '../_models/ticket.model';
 import { AuthService } from '../_services/auth.service';
 import { TicketService } from '../_services/ticket.service';
+import { Comment } from '../_models/comment.model';
 
 @Component({
   selector: 'app-ticket',
@@ -18,6 +19,7 @@ export class TicketComponent implements OnInit {
 
   newStatusId: number;
   newAssignId: number;
+  newComment: string;
 
   constructor(private route: ActivatedRoute,
     public authService: AuthService,
@@ -67,7 +69,28 @@ export class TicketComponent implements OnInit {
 
     this.ticketService.reassignTicket(this.newAssignId, this.ticketInfo.ticket.ticketId).subscribe(
       () => {
+        const newAssigned = this.ticketInfo.users.find(x => x.userId === this.newAssignId);
+        this.ticketInfo.ticket.assignedToNavigation = newAssigned;
         this.messageService.add({ severity: 'success', summary: 'Success', detail: "Ticket reassigned" });
+      }, () => {
+        this.messageService.add({ severity: 'error', summary: 'Failed', detail: "Something went wrong" });
+      }
+    );
+  }
+
+  onAddComment() {
+    if (!this.newComment || this.newComment === "") {
+      return;
+    }
+
+    const comment = new Comment();
+    comment.comment = this.newComment;
+    comment.commentDate = new Date(),
+    comment.ticketId = this.ticketInfo.ticket.ticketId;
+    comment.userId = this.authService.userid;
+    this.ticketService.addComment(comment).subscribe(
+      (res) => {
+        this.ticketInfo.ticket.comments.unshift(res);
       }, () => {
         this.messageService.add({ severity: 'error', summary: 'Failed', detail: "Something went wrong" });
       }

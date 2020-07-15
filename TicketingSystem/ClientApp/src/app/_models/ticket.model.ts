@@ -13,7 +13,7 @@ export class Ticket {
     reportedBy: string;
     priority: string;
     severity: string;
-    comments: Comment;
+    comments: Comment[];
   };
 
   status: { statusId: number, description: string }[];

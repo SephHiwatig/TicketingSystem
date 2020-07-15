@@ -46,6 +46,8 @@ namespace TicketingSystem.Controllers
             if (ticket == null)
                 return NotFound();
 
+            ticket.Comments = ticket.Comments.OrderByDescending(comment => comment.CommentDate).ToList();
+
             var users = _ticketUoW.Users.GetAll().ToArray();
             var status = _ticketUoW.Status.GetAll().ToArray();
 
@@ -150,9 +152,43 @@ namespace TicketingSystem.Controllers
             ticket.StatusId = data.FieldId;
 
             _ticketUoW.Tickets.Update(ticket);
+
+            var status = _ticketUoW.Status.GetByID(data.FieldId);
+
+            var timeline = new Timeline()
+            {
+                TicketId = ticket.TicketId,
+                DoneBy = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value),
+                Action = status.Description,
+                ActionDate = DateTime.Now
+            };
+
+            _ticketUoW.Timeline.Insert(timeline);
+
             _ticketUoW.Save();
 
             return NoContent();
+        }
+
+        [HttpPost("add-comment")]
+        public IActionResult AddComment(CommentDto comment)
+        {
+            var newComment = new Comments()
+            {
+                Comment = comment.Comment,
+                CommentDate = comment.CommentDate,
+                UserId = comment.UserId,
+                TicketId = comment.TicketId
+            };
+
+            _ticketUoW.Comments.Insert(newComment);
+            _ticketUoW.Save();
+
+            newComment.User = _ticketUoW.Users.GetByID(newComment.UserId);
+
+            var commentToReturn = _mapper.Map<CommentDto>(newComment);
+
+            return Ok(commentToReturn);
         }
     }
 }

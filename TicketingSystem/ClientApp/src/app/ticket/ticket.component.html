@@ -92,8 +92,10 @@
   </div>
   <div class="comment-body">
     <div class="new-comment">
-      <textarea pInputTextarea class="txtArea" [rows]="5"></textarea>
-      <button pButton type="button" class="ui-button-raised" label="Add Comment"></button>
+      <textarea pInputTextarea class="txtArea" [rows]="5" [(ngModel)]="newComment"></textarea>
+      <button pButton type="button" class="ui-button-raised" label="Add Comment"
+              (click)="onAddComment()"
+              [disabled]="!newComment || newComment === ''"></button>
     </div>
     <ul class="comment-list">
       <li *ngFor="let comment of ticketInfo.ticket.comments">

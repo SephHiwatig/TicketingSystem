@@ -5,6 +5,7 @@ import { Helper } from "../helpers/Helper";
 import { MessageService } from "primeng-lts/api";
 import { Observable } from "rxjs";
 import { Ticket } from "../_models/ticket.model";
+import { Comment } from "../_models/comment.model";
 
 @Injectable({
   providedIn: 'root'
@@ -35,5 +36,9 @@ export class TicketService {
 
   changeStatus(newStatusId: number, ticketId: number) {
     return this.http.post(environment.base_api + 'ticket/change-status', { ticketId: ticketId, fieldId: newStatusId }, { headers: Helper.getHeaders() });
+  }
+
+  addComment(comment: Comment): Observable<Comment> {
+    return this.http.post<Comment>(environment.base_api + 'ticket/add-comment', comment, { headers: Helper.getHeaders() });
   }
 }

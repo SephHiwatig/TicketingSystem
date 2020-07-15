@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\JHiwatig\\source\\repos\\TicketingSystem\\DAL\\DAL.csproj": {}
+    "C:\\Users\\Joseph_dev\\Desktop\\portfolio\\TicketingSystem\\DAL\\DAL.csproj": {}
   },
   "projects": {
-    "C:\\Users\\JHiwatig\\source\\repos\\TicketingSystem\\DAL\\DAL.csproj": {
+    "C:\\Users\\Joseph_dev\\Desktop\\portfolio\\TicketingSystem\\DAL\\DAL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\JHiwatig\\source\\repos\\TicketingSystem\\DAL\\DAL.csproj",
+        "projectUniqueName": "C:\\Users\\Joseph_dev\\Desktop\\portfolio\\TicketingSystem\\DAL\\DAL.csproj",
         "projectName": "DAL",
-        "projectPath": "C:\\Users\\JHiwatig\\source\\repos\\TicketingSystem\\DAL\\DAL.csproj",
-        "packagesPath": "C:\\Users\\JHiwatig\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\JHiwatig\\source\\repos\\TicketingSystem\\DAL\\obj\\",
+        "projectPath": "C:\\Users\\Joseph_dev\\Desktop\\portfolio\\TicketingSystem\\DAL\\DAL.csproj",
+        "packagesPath": "C:\\Users\\Joseph_dev\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Joseph_dev\\Desktop\\portfolio\\TicketingSystem\\DAL\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\JHiwatig\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Joseph_dev\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

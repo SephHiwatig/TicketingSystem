@@ -10,5 +10,7 @@ namespace TicketingSystem.Dtos
         public string Comment { get; set; }
         public DateTime CommentDate { get; set; }
         public UserFormDataDto User { get; set; }
+        public int TicketId { get; set; }
+        public int UserId { get; set; }
     }
 }
