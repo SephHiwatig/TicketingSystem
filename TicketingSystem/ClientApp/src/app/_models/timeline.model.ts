@@ -4,5 +4,5 @@ export class Timeline {
   doneBy: number;
   action: string;
   actionDate: Date;
-  DoneByNavigation: { userId: number, username: string };
+  doneByNavigation: { userId: number, username: string };
 }

@@ -22,7 +22,6 @@ namespace TicketingSystem.Dtos
         [Required]
         [StringLength(255)]
         public string Summary { get; set; }
-        [Required]
         [StringLength(255)]
         public string Comment { get; set; }
     }

@@ -122,7 +122,7 @@ namespace TicketingSystem.Controllers
             {
                 TicketId = newTicket.TicketId,
                 DoneBy = currentUserId,
-                Action = "create",
+                Action = "opened",
                 ActionDate = DateTime.Now
             };
             newTicket.Timelines.Add(newTimeline);
@@ -138,6 +138,16 @@ namespace TicketingSystem.Controllers
         {
             var ticket = _ticketUoW.Tickets.GetByID(data.TicketId);
             ticket.AssignedTo = data.FieldId;
+
+            var timeline = new Timeline()
+            {
+                TicketId = ticket.TicketId,
+                DoneBy = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value),
+                Action = "reassigned",
+                ActionDate = DateTime.Now
+            };
+
+            _ticketUoW.Timeline.Insert(timeline);
 
             _ticketUoW.Tickets.Update(ticket);
             _ticketUoW.Save();
@@ -159,7 +169,7 @@ namespace TicketingSystem.Controllers
             {
                 TicketId = ticket.TicketId,
                 DoneBy = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value),
-                Action = status.Description,
+                Action = status.Description.ToLower(),
                 ActionDate = DateTime.Now
             };
 

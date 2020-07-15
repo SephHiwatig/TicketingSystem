@@ -33,7 +33,8 @@ namespace TicketingSystem.Controllers
         {
             var myAssigned = _ticketUoW
                 .Tickets
-                .Get(x => x.AssignedTo == int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                .Get(x => x.AssignedTo == int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value) &&
+                    x.StatusId != 3 && x.StatusId != 4)
                 .Include(x => x.Project);
 
             var pagedMyAssigned = await PagedList<Tickets>.CreateAsync(myAssigned, 1, 10);
@@ -52,7 +53,7 @@ namespace TicketingSystem.Controllers
 
             var resolved = _ticketUoW
                 .Tickets
-                .Get(x => x.StatusId == 3)
+                .Get(x => x.StatusId == 3 || x.StatusId == 4)
                 .Include(x => x.Project);
 
             var pagedResolved = await PagedList<Tickets>.CreateAsync(resolved, 1, 10);
@@ -62,6 +63,7 @@ namespace TicketingSystem.Controllers
             var timeline = _ticketUoW
                 .Timeline
                 .GetAll()
+                .OrderByDescending(x => x.ActionDate)
                 .Include(x => x.DoneByNavigation);
 
             var pagedTimeline = await PagedList<Timeline>.CreateAsync(timeline, 1, 10);

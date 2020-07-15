@@ -24,7 +24,16 @@ export class DashboardComponent implements OnInit {
       this.recent = data['data']['recent'];
       this.resolved = data['data']['resolved'];
       this.timeline = data['data']['timeline'];
+      console.log(this.timeline);
     });
+  }
+
+  onAddLeadZero(ticketId: number) {
+    let res = ticketId.toString();
+    while (res.length < 5) {
+      res = "0" + res;
+    }
+    return res;
   }
 
 }

@@ -10,41 +10,23 @@
         </div>
       </div>
       <ul class="ticket-list">
-        <li class="ticket-item">
+        <li *ngFor="let ticket of myAssigned.result" class="ticket-item">
           <div>
-            <i class="pi pi-thumbs-up icon-ok"></i>
+            <i *ngIf="ticket.priorityId <= 3" class="pi pi-thumbs-up icon-ok"></i>
+            <i *ngIf="ticket.priorityId > 3" class="pi pi-exclamation-triangle icon-danger"></i>
           </div>
           <div>
             <p>
-              <a>0001</a> [<a>AlgoVisualizer</a>]  This is a title
+              <a [routerLink]="'/ticket/' + ticket.ticketId">{{onAddLeadZero(ticket.ticketId)}}</a> [<a>{{ticket.project.projectName}}</a>]  {{ticket.title}}
             </p>
-            <small>October 12 , 1993</small>
-          </div>
-        </li>
-        <li class="ticket-item">
-          <div>
-            <i class="pi pi-thumbs-up icon-ok"></i>
-          </div>
-          <div>
-            <p>
-              <a>0001</a> [<a>AlgoVisualizer</a>]  This is a title
-            </p>
-            <small>October 12 , 1993</small>
-          </div>
-        </li>
-        <li class="ticket-item">
-          <div>
-            <i class="pi pi-exclamation-triangle icon-danger"></i>
-          </div>
-          <div>
-            <p>
-              <a>0001</a> [<a>AlgoVisualizer</a>]  This is a title
-            </p>
-            <small>October 12 , 1993</small>
+            <small>{{ticket.dateCreated | date}}</small>
           </div>
         </li>
       </ul>
-      <p-paginator [rows]="10" [totalRecords]="120" [rowsPerPageOptions]="[10,20,30]" pageLinkSize="3"></p-paginator>
+      <p-paginator [rows]="myAssigned.pagination.itemsPerPage"
+                   [totalRecords]="myAssigned.pagination.totalItems"
+                   [rowsPerPageOptions]="[10,15,20]"
+                   pageLinkSize="3"></p-paginator>
     </div>
     <div>
       <div class="list-header">
@@ -56,16 +38,23 @@
         </div>
       </div>
       <ul class="ticket-list">
-        <li>
-          <p>
-            <a>0001</a> project <a>AlgoVisualizer</a>
-          </p>
-          <small>October 12 , 1993</small>
+        <li *ngFor="let ticket of recent.result" class="ticket-item">
+          <div>
+            <i *ngIf="ticket.priorityId <= 3" class="pi pi-thumbs-up icon-ok"></i>
+            <i *ngIf="ticket.priorityId > 3" class="pi pi-exclamation-triangle icon-danger"></i>
+          </div>
+          <div>
+            <p>
+              <a [routerLink]="'/ticket/' + ticket.ticketId">{{onAddLeadZero(ticket.ticketId)}}</a> [<a>{{ticket.project.projectName}}</a>]  {{ticket.title}}
+            </p>
+            <small>{{ticket.dateCreated | date}}</small>
+          </div>
         </li>
-        <li>Template</li>
-        <li>Template</li>
       </ul>
-      <p-paginator [rows]="10" [totalRecords]="120" [rowsPerPageOptions]="[10,20,30]" pageLinkSize="3"></p-paginator>
+      <p-paginator [rows]="recent.pagination.itemsPerPage"
+                   [totalRecords]="recent.pagination.totalItems"
+                   [rowsPerPageOptions]="[10,15,20]"
+                   pageLinkSize="3"></p-paginator>
     </div>
     <div>
       <div class="list-header">
@@ -73,15 +62,26 @@
           <i class="pi pi-check-circle"></i>
         </div>
         <div>
-          <h2>Resolved</h2>
+          <h2>Resolved or Closed</h2>
         </div>
       </div>
       <ul class="ticket-list">
-        <li>Template</li>
-        <li>Template</li>
-        <li>Template</li>
+        <li *ngFor="let ticket of resolved.result" class="ticket-item">
+          <div>
+            <i class="pi pi-check-square icon-ok"></i>
+          </div>
+          <div>
+            <p>
+              <a [routerLink]="'/ticket/' + ticket.ticketId">{{onAddLeadZero(ticket.ticketId)}}</a> [<a>{{ticket.project.projectName}}</a>]  {{ticket.title}}
+            </p>
+            <small>{{ticket.dateCreated | date}}</small>
+          </div>
+        </li>
       </ul>
-      <p-paginator [rows]="10" [totalRecords]="120" [rowsPerPageOptions]="[10,20,30]" pageLinkSize="3"></p-paginator>
+      <p-paginator [rows]="resolved.pagination.itemsPerPage"
+                   [totalRecords]="resolved.pagination.totalItems"
+                   [rowsPerPageOptions]="[10,15,20]"
+                   pageLinkSize="3"></p-paginator>
     </div>
   </div>
   <div class="timeline">
@@ -95,41 +95,27 @@
         </div>
       </div>
       <ul class="ticket-list">
-        <li class="ticket-item">
+        <li *ngFor="let time of timeline.result" class="ticket-item">
           <div>
-            <div class="timeline-status timeline-status-ok"></div>
+            <div [ngClass]="{'timeline-status': true, 'opened': time.action === 'opened',
+                 'closed': time.action === 'closed',
+                 'reopened': time.action === 'reopened',
+                 'reassigned': time.action === 'reassigned',
+                 'resolved': time.action === 'resolved',
+                 'proccessing ': time.action === 'proccessing'}"></div>
           </div>
           <div>
             <p>
-              <a>0001</a> opened by <a>Joseph</a>
+              <a [routerLink]="'/ticket/' + time.ticketId">{{onAddLeadZero(time.ticketId)}}</a> {{time.action}} by <a>{{time.doneByNavigation.username}}</a>
             </p>
-            <small>October 12 , 1993</small>
-          </div>
-        </li>
-        <li class="ticket-item">
-          <div>
-            <div class="timeline-status timeline-status-reopened"></div>
-          </div>
-          <div>
-            <p>
-              <a>0001</a> reopened by <a>Joseph</a>
-            </p>
-            <small>October 12 , 1993</small>
-          </div>
-        </li>
-        <li class="ticket-item">
-          <div>
-            <div class="timeline-status timeline-status-closed"></div>
-          </div>
-          <div>
-            <p>
-              <a>0001</a> closed by <a>Joseph</a>
-            </p>
-            <small>October 12 , 1993</small>
+            <small>{{time.actionDate | date}}</small>
           </div>
         </li>
       </ul>
-      <p-paginator [rows]="10" [totalRecords]="120" [rowsPerPageOptions]="[10,20,30]" pageLinkSize="3"></p-paginator>
+      <p-paginator [rows]="timeline.pagination.itemsPerPage"
+                   [totalRecords]="timeline.pagination.totalItems"
+                   [rowsPerPageOptions]="[10,15,20]"
+                   pageLinkSize="3"></p-paginator>
     </div>
   </div>
 </section>
