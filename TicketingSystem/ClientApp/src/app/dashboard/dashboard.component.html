@@ -12,8 +12,8 @@
       <ul class="ticket-list">
         <li *ngFor="let ticket of myAssigned.result" class="ticket-item">
           <div>
-            <i *ngIf="ticket.priorityId <= 3" class="pi pi-thumbs-up icon-ok"></i>
-            <i *ngIf="ticket.priorityId > 3" class="pi pi-exclamation-triangle icon-danger"></i>
+            <i *ngIf="ticket.priorityId < 3" class="pi pi-thumbs-up icon-ok"></i>
+            <i *ngIf="ticket.priorityId >= 3" class="pi pi-exclamation-triangle icon-danger"></i>
           </div>
           <div>
             <p>
@@ -27,7 +27,7 @@
                    [totalRecords]="myAssigned.pagination.totalItems"
                    [rowsPerPageOptions]="[10,15,20]"
                    pageLinkSize="3"
-                   (onPageChange)="paginateRecents($event)"></p-paginator>
+                   (onPageChange)="paginateMyAssigned($event)"></p-paginator>
     </div>
     <div>
       <div class="list-header">

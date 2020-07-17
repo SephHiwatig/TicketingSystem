@@ -37,15 +37,36 @@ export class DashboardComponent implements OnInit {
   }
 
   paginateMyAssigned(event) {
+    const pageNumber = event.page + 1;
+    const pageSize = event.rows;
 
+    this.dashboardService.getTickets(pageNumber, pageSize, 'myassigned').subscribe(
+      (res) => {
+        this.myAssigned = res;
+      }
+    );
   }
 
   paginateRecents(event) {
+    const pageNumber = event.page + 1;
+    const pageSize = event.rows;
 
+    this.dashboardService.getTickets(pageNumber, pageSize, 'recent').subscribe(
+      (res) => {
+        this.recent = res;
+      }
+    );
   }
 
   paginateResolved(event) {
+    const pageNumber = event.page + 1;
+    const pageSize = event.rows;
 
+    this.dashboardService.getTickets(pageNumber, pageSize, 'resolved').subscribe(
+      (res) => {
+        this.resolved = res;
+      }
+    );
   }
 
   paginateTimeline(event) {

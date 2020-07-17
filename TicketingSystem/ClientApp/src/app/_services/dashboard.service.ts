@@ -45,6 +45,25 @@ export class DashboardService {
       );
   }
 
+  getTickets(pageNumber: number, pageSize: number, type: string) {
+    const paginatedResult: PaginatedResult<TicketForDashboard[]> = new PaginatedResult<TicketForDashboard[]>();
+
+    let params = new HttpParams();
+    params = params.append('PageNumber', pageNumber.toString());
+    params = params.append('PageSize', pageSize.toString());
+
+    return this.http.get<TicketForDashboard[]>(environment.base_api + 'dashboard/' + type, { headers: Helper.getHeaders(), params: params, observe: 'response' })
+      .pipe(
+        map(response => {
+          paginatedResult.result = response.body;
+          if (response.headers.get('Pagination') != null) {
+            paginatedResult.pagination = JSON.parse(response.headers.get('Pagination'));
+          }
+          return paginatedResult;
+        })
+      );
+  }
+
   getTimeline(pageNumber: number, pageSize: number): Observable<PaginatedResult<Timeline[]>> {
     const paginatedResult: PaginatedResult<Timeline[]> = new PaginatedResult<Timeline[]>();
 
